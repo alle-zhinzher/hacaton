@@ -30,9 +30,9 @@ const Settings = () => {
                 <TextField type="email" disabled id="standard-basic" label="Email" />
             </Grid>
             <Grid item>
-                <Link to="/settings/password"><Button variant="contained" color="Secondary">Change Password</Button></Link>
+                <Link to="/profile/settings/password"><Button variant="contained" color="Secondary">Change Password</Button></Link>
             </Grid>
-            <Route path="/settings/password">
+            <Route path="/profile/settings/password">
                 <Grid item>
                     <TextField type="password" id="standard-basic" label="Old Password" />
                 </Grid>
@@ -41,7 +41,7 @@ const Settings = () => {
                 </Grid>
             </Route>
             <Grid item>
-                <Link to="/settings"><Button variant="contained" color="Primary">Save</Button></Link>
+                <Link to="/profile/settings"><Button variant="contained" color="Primary">Save Changes</Button></Link>
             </Grid>
         </Grid>
     );

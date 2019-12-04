@@ -16,13 +16,11 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <Profile>
-
-                    </Profile>
-                    {/* <Switch>
+                    <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/t" component={TestRedux} />
-                    </Switch> */}
+                        <Route path="/profile" component={Profile} />
+                    </Switch>
                 </Router>
             </Provider>
         )

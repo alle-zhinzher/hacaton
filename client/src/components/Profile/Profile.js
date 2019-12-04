@@ -16,13 +16,13 @@ const Profile = () => {
         >
             <Grid item xs={2}>
                 <MenuList>
-                    <Link to="/stats"><MenuItem>Statistics</MenuItem></Link>
-                    <Link to="/settings"><MenuItem>Settings</MenuItem></Link>
+                    <Link to="/profile"><MenuItem>Statistics</MenuItem></Link>
+                    <Link to="/profile/settings"><MenuItem>Settings</MenuItem></Link>
                 </MenuList>
             </Grid>
             <Grid item xs={6}>
-                <Route path="/stats" component={Stats} />
-                <Route path="/settings" component={Settings} />
+                <Route path="/profile" exact component={Stats} />
+                <Route path="/profile/settings" component={Settings} />
             </Grid>
         </Grid>
     );
