@@ -14,6 +14,16 @@ exports.default = class roulette{
                 this.makeBet(user,bet,betType);
                 io.emit("makeBet",roulette.bets);
             });
+            socket.on("startGame",function(msg,cb){
+                if(gameState=="endGame"){
+                    this.startGame();
+                    io.emit("startGame")
+                }
+                else{
+                    cb("error");
+                    //error
+                }
+            })
             socket.on('disconnect', function(){
               console.log('user disconnected');
             });
