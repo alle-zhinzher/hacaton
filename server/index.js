@@ -12,7 +12,6 @@ require('./db/connection/mongoose');
 // Middleware
 app.use(require('./routs/middleware/logger'));
 // API routs
-app.use('/api/test', require('./routs/api/test'));
 app.use('/api/user', require('./routs/api/user'));
 app.use('/api/auth', require('./routs/api/auth'));
 
