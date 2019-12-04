@@ -1,9 +1,14 @@
 const User = require('../models/User');
+const Stat = require('../models/Statistics');
 const bcActions = require('../../utils/bcrytptActions');
 
 const registerUser = (username, email, password, firstName, lastName) => {
     const hashedPassword = bcActions.genPassword(password);
-    return new User({ username, email, password: hashedPassword, firstName, lastName }).save();
+    const user = new User({ username, email, password: hashedPassword, firstName, lastName }).save();
+    user.then(user => {
+        new Stat({ userID: user._id }).save();
+    })
+    return user
 };
 
 const getUserByEmail = (email) => User.findOne({ email });
