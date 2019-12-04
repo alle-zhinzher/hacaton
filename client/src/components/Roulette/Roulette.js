@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CONSTANT from './constants'
+import io from 'socket.io-client'
 import './Roulette.scss'
 
 export default function Roulette() {
@@ -26,6 +27,17 @@ export default function Roulette() {
     const [moneyState, setMoneyState] = useState(100);
 
     /*---------- FUNCTIONS ----------*/
+    let socket;
+    useEffect(() => {
+        socket = io();
+        socket.on("makeBet", (msg) => { console.log(msg) });
+        socket.on("endGame", (msg) => {
+            console.log(msg);
+            calculateRotateDegree(msg.result);
+            setTableState(initialTableState);
+        });
+    }, [])
+
     function getIndex(number) {
         for (let i = 0; i < CONSTANT.ROULETTE_NUMBERS.length; i++) {
             if (CONSTANT.ROULETTE_NUMBERS[i].value === number) return i;
@@ -48,6 +60,7 @@ export default function Roulette() {
             setMoneyState(money ? moneyState - money : moneyState + newTableState[value]);
             newTableState[value] = money ? newTableState[value] + money : 0;
             setTableState(newTableState);
+            socket.emit("makeBet", { user: "Я_Какая_то_Заглушка", bet: newTableState[value], betType: value });
         }
     }
 
@@ -95,9 +108,9 @@ export default function Roulette() {
                     }
                 </div>
             </section>
-            <button onClick={() => {
+            {/* <button onClick={() => {
                 calculateRotateDegree(parseInt(Math.random() * CONSTANT.ROULETTE_NUMBERS.length));
-            }}>Rotate</button>
+            }}>Rotate</button> */}
         </>
     )
 }
