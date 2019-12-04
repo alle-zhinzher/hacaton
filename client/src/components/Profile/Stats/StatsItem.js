@@ -55,7 +55,7 @@ const StatsItem = (props) => {
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} sm={6} m={4}>
+        <Grid item xs={12} sm={4}>
             <Card className={classes.card}>
                 <div className={classes.stripe}>
                 </div>
