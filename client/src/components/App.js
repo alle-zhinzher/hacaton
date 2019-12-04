@@ -10,7 +10,8 @@ import Profile from './Profile/Profile';
 import ListOfGames from './ListOfGames/ListOfGames';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
-import GameInfo from './GameInfo/GameInfo'
+import GameInfo from './GameInfo/GameInfo';
+import Footer from "./Footer/Footer";
 // Styles
 import './App.scss';
 
@@ -27,6 +28,7 @@ class App extends Component {
                         <Route path="/games" component={ListOfGames} />
                         <Route path="/games/:name" component={GameInfo} />
                     </Switch>
+                    <Footer/>
                 </Router>
             </Provider>
         );
