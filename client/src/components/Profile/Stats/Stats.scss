@@ -1,0 +1,23 @@
+.stat-item {
+    padding: 5px 10px;
+    margin-top: 25px;
+    transition: 0.2s;
+}
+
+.stat-item:hover {
+    transform: scale(1.1);
+}
+
+.stat-item__name {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #222222;
+}
+
+.stat-item__number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFC000;
+    text-align:center;
+}
