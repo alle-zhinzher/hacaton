@@ -8,11 +8,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from './Main/Main';
 import Profile from './Profile/Profile';
 import ListOfGames from './ListOfGames/ListOfGames';
+<<<<<<< HEAD
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 
 // Styles
 import './App.scss';
+=======
+import GameInfo from './GameInfo/GameInfo'
+>>>>>>> origin/listOfGames
 
 class App extends Component {
     render() {
@@ -22,9 +26,10 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={Main} />
                         <Route path="/profile" component={Profile} />
-                        <Route path="/games" component={ListOfGames} />
                         <Route path="/sing-in" component={SignIn} />
                         <Route path="/sing-up" component={SignUp} />
+                        <Route path="/games" component={ListOfGames} />
+                        <Route path="/games/:name" component={GameInfo} />
                     </Switch>
                 </Router>
             </Provider>
