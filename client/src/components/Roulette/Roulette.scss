@@ -1,0 +1,103 @@
+.roulette-container{
+    position: relative;
+    padding-top: 10px;
+
+    &__roulette{
+        transition: 1s cubic-bezier(.7,.01,.01,1);
+    }
+
+    &__roulette{
+        display: block;
+        margin: 0 auto;
+    }
+
+    &__arrow{
+        position: absolute;
+        top: 0;
+        left: calc(50% - 10px);
+        margin: 0 auto -10px;
+        width: 20px;
+        height: 20px;
+        background: blue;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+}
+
+.table{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 50px;
+    width: 1000px;
+
+    &__cell{
+        position: relative;
+        min-width: calc(500px / 6);
+        min-height: calc(500px / 6);
+        border: 1px solid black;
+        background: green;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        &-value{
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        &-money{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            color: white;
+            font-size: 2em;
+        }
+    }
+
+    &__cell-big{
+        flex-grow: 1;
+    }
+}
+
+.chip-table{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    width: 1000px;
+    border: 1px solid black;
+    background: green;
+    box-sizing: border-box;
+
+    &__money{
+        flex-grow: 1;
+        margin: 10px;
+        line-height: 100px;
+        font-size: 2em;
+        color: white;
+    }
+
+    &__chip{
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        border-radius: 100%;
+        background: greenyellow;
+        text-align: center;
+        line-height: 100px;
+        box-shadow: 0 0 15px black;
+        font-size: 2em;
+        color: white;
+        cursor: pointer;
+    }
+
+    &__chip-white   { background: white; color: black}
+    &__chip-red     { background: red; }
+    &__chip-black   { background: black; }
+    &__chip-blue    { background: blue; }
+    &__chip-green   { background: green; }
+
+    &__chip-active{box-shadow: 0 0 5px white;}
+}
