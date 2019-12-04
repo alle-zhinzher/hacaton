@@ -1,15 +1,16 @@
 import React from 'react';
 
 //Components
+import {Link} from "@material-ui/core";
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Button from "@material-ui/core/Button";
 
+//Styles
+import './SideBar.scss'
 
 export default class SideBar extends React.Component{
 
@@ -27,23 +28,36 @@ export default class SideBar extends React.Component{
                         onClick={this.props.toggle(false)}
                         onKeyDown={this.props.toggle(false)}
                     >
-                        <List>
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
+                        <List className='list'>
+                            {
+                                [['Home', './'], ['All games', './games'], ['Item3',''], ['Item4','']].map((item, index) => (
+                                    <>
+                                        <Link to={item[1]} key={item[0]}>
+                                            <ListItem button>
+                                                <ListItemText primary={item[0]} />
+                                            </ListItem>
+                                        </Link>
+                                        <Divider />
+                                    </>
+                                ))
+                            }
                         </List>
-                        <Divider />
-                        <List>
-                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
+                        {
+                            this.props.user? (
+                                <Link to='./profile' key='Profile'>
+                                    <ListItem button>
+                                        <ListItemText primary='Profile' />
+                                    </ListItem>
+                                </Link>
+                            ) : (
+                                <Link to='./signin' component="button" className="button-container">
+                                    <Button variant="contained" color="primary" className="login-button">
+                                        Log in
+                                    </Button>
+                                </Link>
+                            )
+                        }
+
                     </div>
                 </Drawer>
             </div>
