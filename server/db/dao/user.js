@@ -17,9 +17,14 @@ const getUserByID = (id) => User.findById(id).select('-password');
 
 const getAllUsers = () => User.find();
 
+const updateUserMoney = (id, currentWin) => {
+    User.findOneAndUpdate({ _id: id }, { $inc: { money: currentWin } }).exec()
+}
+
 module.exports = {
     registerUser,
     getUserByID,
     getUserByEmail,
     getAllUsers,
+    updateUserMoney,
 };

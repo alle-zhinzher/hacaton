@@ -14,13 +14,16 @@ router.get('/', auth, (req, res) => {
         .then(statistic => res.json(statistic));
 });
 
-// @route   GET api/stat/up
-// @desc    Get user stat
+// @route   GET api/stat/update
+// @desc    Update User statistic
 // @access  Private
-router.get('/up', auth, (req, res) => {
-    const { id } = req.user
-    stat.upTotalWin(id)
-        .then(statistic => res.json(statistic));
+router.post('/update', auth, (req, res) => {
+    const { id } = req.user;
+    const { sum } = req.body;
+    stat.updateUserStatistic(id, sum)
+        .then(newStat => {
+            res.json(newStat)
+        });
 });
 
 

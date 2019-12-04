@@ -7,11 +7,19 @@ const StatSchema = new Schema({
         type: String,
         required: true,
     },
-    totalWin: {
+    totalWinSum: {
         type: Number,
         default: 0,
     },
-    totalLose: {
+    totalWinCount: {
+        type: Number,
+        default: 0,
+    },
+    totalLoseSum: {
+        type: Number,
+        default: 0,
+    },
+    totalLoseCount: {
         type: Number,
         default: 0,
     },
