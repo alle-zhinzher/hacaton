@@ -3,7 +3,6 @@ import { Route, Link } from "react-router-dom";
 import Stats from './Stats/Stats'
 import Settings from './Settings/Settings'
 import { Grid, MenuItem, MenuList } from '@material-ui/core';
-import './Profile.scss';
 
 const Profile = () => {
     return (
