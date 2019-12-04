@@ -12,6 +12,7 @@ const Stats = () => {
     });
 
     useEffect(() => {
+        {/*Фетчить данные тут, это componentDidMount*/}
         const mockStats = {
             totalWinSum: 100,
             totalWinCount: 2,
@@ -39,7 +40,7 @@ const Stats = () => {
         >
             {/* <Grid container item xs={12} justify="center">
                 <CircularProgress variant="static" value={75} />
-            </Grid> */}
+            </Grid> */} {/*Можно использовать в качестве индикатора уровня*/}
             <StatsItem name="Сумма выигрыша" number={stats.totalWinSum}></StatsItem>
             <StatsItem name="Игр выиграно" number={stats.totalWinCount}></StatsItem>
             <StatsItem name="Сумма проигрыша" number={stats.totalLoseSum}></StatsItem>

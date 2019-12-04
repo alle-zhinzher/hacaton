@@ -10,11 +10,12 @@ const useStyles = makeStyles({
 const Settings = () => {
 
     useEffect(() => {
+        {/*Фетчить данные тут, это componentDidMount*/}
         const mockUser = {
             email: "test@email.com",
             password: "testpassword"
         }
-
+    
         setUser({
             email: mockUser.email,
             password: mockUser.password

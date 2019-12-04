@@ -5,6 +5,7 @@ import { TextField, Grid, Button, ButtonGroup } from '@material-ui/core';
 const Info = () => {
 
     useEffect(()=>{
+        {/*Фетчить данные тут, это componentDidMount*/}
         const mockUser = {
             firstName: "John",
             lastName: "Doe",
