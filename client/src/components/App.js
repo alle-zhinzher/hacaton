@@ -9,6 +9,7 @@ import TestRedux from './TestRedux';
 import Home from './Home';
 // Styles
 import './App.scss'
+import ListOfGames from './ListOfGames/ListOfGames';
 
 class App extends Component {
     render() {
@@ -18,6 +19,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/t" component={TestRedux} />
+                        <Route path="/listOfGames" component={ListOfGames} />
                     </Switch>
                 </Router>
             </Provider>
