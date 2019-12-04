@@ -12,6 +12,7 @@ import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import GameInfo from './GameInfo/GameInfo';
 import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 // Styles
 import './App.scss';
 
@@ -20,6 +21,9 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router>
+                    <Header
+                        user={{ name: 'Player', money: 104 }}
+                    />
                     <Switch>
                         <Route path="/" exact component={Main} />
                         <Route path="/profile" component={Profile} />
@@ -28,7 +32,7 @@ class App extends Component {
                         <Route path="/games" component={ListOfGames} />
                         <Route path="/games/:name" component={GameInfo} />
                     </Switch>
-                    <Footer/>
+                    <Footer />
                 </Router>
             </Provider>
         );
