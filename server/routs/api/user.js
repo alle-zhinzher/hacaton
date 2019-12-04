@@ -18,8 +18,12 @@ router.post('/', (req, res) => {
         })
 });
 
+// @route   GET api/users
+// @desc    Get all users
+// @access  Public
+router.get('/', (req, res) => {
+    users.getAllUsers()
+        .then(users => res.json(users));
+});
 
-/* 
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZTdkYTU4NmU0NTlhNDM2N2UxM2JkNCIsImlhdCI6MTU3NTQ3NTgwMiwiZXhwIjoxNTc1NTYyMjAyfQ.dLg2n6U6LQsyWAsOoedZJQVQxC-nm5wqGLcXFCb49Nc"
-*/
 module.exports = router;

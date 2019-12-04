@@ -1,4 +1,6 @@
 const express = require('express');
+const router = express.Router();
+// Middleware
 const auth = require('../middleware/auth');
 // Utils
 const genToken = require('../../utils/genJWT');
@@ -6,7 +8,6 @@ const bcActions = require('../../utils/bcrytptActions');
 // DB
 const users = require('../../db/dao/user');
 
-const router = express.Router();
 
 // @route   POST api/auth
 // @desc    Login User
