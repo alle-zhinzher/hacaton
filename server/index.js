@@ -14,5 +14,7 @@ app.use(require('./routs/middleware/logger'));
 // API routs
 app.use('/api/test', require('./routs/api/test'));
 app.use('/api/user', require('./routs/api/user'));
+app.use('/api/auth', require('./routs/api/auth'));
+
 // Run server
 app.listen(serverConfig.PORT, () => console.log(`Server started on port ${serverConfig.PORT}`));
