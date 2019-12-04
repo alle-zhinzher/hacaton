@@ -8,15 +8,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from './Main/Main';
 import Profile from './Profile/Profile';
 import ListOfGames from './ListOfGames/ListOfGames';
-<<<<<<< HEAD
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
-
+import GameInfo from './GameInfo/GameInfo'
 // Styles
 import './App.scss';
-=======
-import GameInfo from './GameInfo/GameInfo'
->>>>>>> origin/listOfGames
 
 class App extends Component {
     render() {
