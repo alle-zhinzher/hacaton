@@ -7,12 +7,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     devtool: "#@cheap-eval-source-map",
     devServer: {
         contentBase: baseWebpackConfig.externals.paths.dist,
+        publicPath: "/",
         port: 8080,
-        overlay: {
-            warnings: false,
-            errors: true,
-            historyApiFallback: true,
-        }
+        historyApiFallback: true,
     },
     plugins: [
         new webpack.SourceMapDevToolPlugin({

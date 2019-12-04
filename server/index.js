@@ -1,10 +1,14 @@
 const path = require('path');
 const express = require('express');
 const config = require('config');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+const roulette = require('./roulette/roulette')
 
 const serverConfig = config.get('server');
 // App initialization
-const app = express();
+
 app.use(express.json())
 
 // Connect database
@@ -14,4 +18,5 @@ app.use(require('./routs/middleware/logger'));
 // API routs
 app.use('/api/test', require('./routs/api/test'));
 // Run server
-app.listen(serverConfig.PORT, () => console.log(`Server started on port ${serverConfig.PORT}`));
+server.listen(serverConfig.PORT, () => console.log(`Server started on port ${serverConfig.PORT}`));
+//app.listen(serverConfig.PORT, () => console.log(`Server started on port ${serverConfig.PORT}`));
