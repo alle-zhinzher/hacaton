@@ -87,10 +87,7 @@ const Settings = () => {
             {emailPressed &&
                 <>
                     <Grid item>
-                        <TextField type="email" id="newemail" label="New Email" />
-                    </Grid>
-                    <Grid item>
-                        <TextField onChange={(e) => { handleEmailChange(e) }} type="email" id="newemailconfirm" label="Confirm New Email" />
+                        <TextField onChange={(e) => { handleEmailChange(e) }} type="email" id="newemail" label="New Email" />
                     </Grid>
                     <Button className={classes.mtop} onClick={onEmailConfirm} variant="contained" color="primary">Confirm</Button>
                 </>
