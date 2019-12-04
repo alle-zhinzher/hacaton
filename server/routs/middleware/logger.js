@@ -1,4 +1,4 @@
-const logTextWithColor = require('../../lib/colors')
+const logTextWithColor = require('../../utils/colors')
 
 module.exports = (req, res, next) => {
     const text = `${req.method} ${req.url}`
