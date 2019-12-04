@@ -1,14 +1,16 @@
-
 import React, { Component } from 'react'
+import { Provider } from 'react-redux';
+import store from '../store';
+
+import TestRedux from './TestRedux';
 import './App.scss'
 
 class App extends Component {
     render() {
-        const cats = new Array(1000).fill(0).map(() => <img src="assets/img/cat.jpg" />)
         return (
-            <div className="hello">
-                {cats}
-            </div>
+            <Provider store={store}>
+                <TestRedux />
+            </Provider>
         )
     }
 }
