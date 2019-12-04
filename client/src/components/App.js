@@ -5,12 +5,14 @@ import store from '../store';
 // Router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Components
-import TestRedux from './TestRedux';
-import Home from './Home';
-import Profile from './Profile/Profile'
-// Styles
-import './App.scss'
+import Main from './Main/Main';
+import Profile from './Profile/Profile';
 import ListOfGames from './ListOfGames/ListOfGames';
+import SignIn from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
+
+// Styles
+import './App.scss';
 
 class App extends Component {
     render() {
@@ -18,15 +20,16 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <Switch>
-                        <Route path="/" exact component={Home} />
-                        <Route path="/t" component={TestRedux} />
+                        <Route path="/" exact component={Main} />
                         <Route path="/profile" component={Profile} />
-                        <Route path="/listOfGames" component={ListOfGames} />
+                        <Route path="/games" component={ListOfGames} />
+                        <Route path="/sing-in" component={SignIn} />
+                        <Route path="/sing-up" component={SignUp} />
                     </Switch>
                 </Router>
             </Provider>
-        )
-    }
-}
+        );
+    };
+};
 
 export default App;
