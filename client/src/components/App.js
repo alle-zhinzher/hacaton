@@ -10,6 +10,7 @@ import Home from './Home';
 // Styles
 import './App.scss'
 import ListOfGames from './ListOfGames/ListOfGames';
+import GameInfo from './GameInfo/GameInfo'
 
 class App extends Component {
     render() {
@@ -19,7 +20,8 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/t" component={TestRedux} />
-                        <Route path="/listOfGames" component={ListOfGames} />
+                        <Route path="/games" exact component={ListOfGames} />
+                        <Route path="/games/:name" component={GameInfo} />
                     </Switch>
                 </Router>
             </Provider>
