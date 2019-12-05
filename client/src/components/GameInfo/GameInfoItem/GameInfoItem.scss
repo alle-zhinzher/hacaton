@@ -1,6 +1,7 @@
 .wrapper{
-    width: 1280px;
-    margin: auto;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .main-title{
@@ -51,14 +52,15 @@
     width: 80px;
     border-radius: 5px;
     margin: auto;
-   
-    &:hover{
-        background: rgb(61, 61, 180);
-    }
-}   
+
+}
 
 .play__link{
     text-decoration: none;
     color: black;
     font-size: 32px;
+}
+
+img {
+    object-fit: cover;
 }

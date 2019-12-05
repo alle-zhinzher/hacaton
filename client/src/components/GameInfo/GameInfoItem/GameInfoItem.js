@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
+import Button from '@material-ui/core/Button';
+
 import './GameInfoItem.scss';
 
 
 
 const GameInfoItem = ({ game }) => (
     <div className='wrapper'>
-        <h1 className='main-title'>{game.heading}</h1>
+        <Typography variant="h2" gutterBottom>{game.heading}</Typography>
         <div className='main-image' style={{ backgroundImage: `url(${game.mainImage})` }}>mainimg</div>
 
-        <div className='top-description'>
+        <section className='top-description'>
             <p className='top-description__content'>{game.descriptionText}</p>
             <div className='features'>
                 <h3 className='features__title'>Main Features</h3>
@@ -20,22 +23,24 @@ const GameInfoItem = ({ game }) => (
                     <li className='feature-list__item'>{game.feature3}</li>
                 </ul>
             </div>
-        </div>
+        </section>
 
         <div className='gallery'>
-            <div className='gallery__item' style={{ backgroundImage: `url(${game.gallery1})` }}>img1</div>
-            <div className='gallery__item' style={{ backgroundImage: `url(${game.gallery2})` }}>img2</div>
+            <img className='gallery__item' src={game.gallery1} />
+            <img className='gallery__item' src={game.gallery2} />
         </div>
 
-        <div className='details'>
+        <section className='details'>
             <h2 className='details__title'>{game.detailsTitle}</h2>
             <p className='details__info'>{game.detailInfo}</p>
+        </section>
+        <section>
             <h3 className='details__caption'>{game.detailCaption}</h3>
             <p className='details__about'>{game.detailAbout}</p>
-        </div>
-        <div className='linkWrap'>
-            <Link to='/game/roulette' className='play__link' >PLAY</Link>
-        </div>
+        </section>
+        <section className='linkWrap'>
+            <Link to='/game/roulette' className='play__link' ><Button variant="contained" color="secondary">Play</Button></Link>
+        </section>
 
     </div>
 );

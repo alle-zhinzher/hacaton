@@ -91,7 +91,23 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [
+    {
+        image: "rouletteCard.png",
+        name: "Roulette",
+        description: "European Roulette is a charming game that is packed full of excitement and big winning potential.",
+        info: "/games/roulette",
+        link: "/game/roulette"
+    },
+    {
+        image: "tictactoe.png",
+        name: "Tic Tac Toe",
+        description: "European Roulette is a charming game that is packed full of excitement and big winning potential.",
+        info: "/games/tictactoe",
+        link: "http://localhost:1000",
+        external: true
+    }
+];
 
 export default function ListOfGamesContent() {
     const classes = useStyles();
@@ -115,19 +131,20 @@ export default function ListOfGamesContent() {
                             <Card className={classes.card}>
                                 <CardMedia
                                     className={classes.cardMedia}
-                                    image="../../../assets/img/rouletteCard.png"
+                                    image={"../../../assets/img/"+card.image}
                                     title="Image title"
                                 />
                                 <CardContent className={classes.cardContent}>
-                                    <Typography gutterBottom variant="h5" component="h2">Roulette</Typography>
-                                    <Typography>European Roulette is a charming game that is packed full of excitement and big winning potential.</Typography>
+                                    <Typography gutterBottom variant="h5" component="h2">{card.name}</Typography>
+                                    <Typography>{card.description}</Typography>
                                 </CardContent>
                                 <CardActions>
                                     <Button size="small" color="primary">
-                                        <Link className='game-container__info' to='/games/roulette'> Game info</Link>
+                                        <Link className='game-container__info' to={card.info}> Game info</Link>
                                     </Button>
                                     <Button size="small" color="primary">
-                                        <Link className='game-container__play' to="/game/roulette">PLAY NOW</Link>
+                                        {card.external? <a className='game-container__play' href={card.link}>PLAY NOW</a> :
+                                            <Link className='game-container__play' to={card.link}>PLAY NOW</Link>}
                                     </Button>
                                 </CardActions>
                             </Card>

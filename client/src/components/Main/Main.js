@@ -67,11 +67,6 @@ export default class Main extends React.Component {
                     </Link>
                 </section>
 
-                <section>
-                    <iframe src="https://agar.io/">
-                        No game here
-                    </iframe>
-                </section>
             </main>
         );
     }
