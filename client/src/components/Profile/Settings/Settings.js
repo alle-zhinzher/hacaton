@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Grid, Button, ButtonGroup, makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     mtop: {
@@ -10,12 +11,12 @@ const useStyles = makeStyles({
 const Settings = () => {
 
     useEffect(() => {
-        {/*Фетчить данные тут, это componentDidMount*/}
+        {/*Фетчить данные тут, это componentDidMount*/ }
         const mockUser = {
             email: "test@email.com",
             password: "testpassword"
         }
-    
+
         setUser({
             email: mockUser.email,
             password: mockUser.password
@@ -70,13 +71,13 @@ const Settings = () => {
         >
             <Grid item>
                 <ButtonGroup>
-                    <Button 
-                        onClick={onPasswordPress} 
-                        variant="contained" 
+                    <Button
+                        onClick={onPasswordPress}
+                        variant="contained"
                         color="secondary">Change Password</Button>
-                    <Button 
-                        onClick={onEmailPress} 
-                        variant="contained" 
+                    <Button
+                        onClick={onEmailPress}
+                        variant="contained"
                         color="secondary">Change Email</Button>
                 </ButtonGroup>
             </Grid>
@@ -86,33 +87,37 @@ const Settings = () => {
                         <TextField type="password" id="oldpass" label="Old Password" />
                     </Grid>
                     <Grid item>
-                        <TextField 
-                            onChange={(e) => { handlePasswordChange(e) }} 
-                            type="password" 
-                            id="newpass" 
+                        <TextField
+                            onChange={(e) => { handlePasswordChange(e) }}
+                            type="password"
+                            id="newpass"
                             label="New Password" />
                     </Grid>
-                    <Button 
-                        className={classes.mtop} 
-                        onClick={onPasswordConfirm} 
-                        variant="contained" 
-                        color="primary">Confirm</Button>
+                    <Link to="/profile/stats">
+                        <Button
+                            className={classes.mtop}
+                            onClick={onPasswordConfirm}
+                            variant="contained"
+                            color="primary">Confirm</Button>
+                    </Link>
                 </>
             }
             {emailPressed &&
                 <>
                     <Grid item>
-                        <TextField 
-                            onChange={(e) => { handleEmailChange(e) }} 
-                            type="email" 
-                            id="newemail" 
+                        <TextField
+                            onChange={(e) => { handleEmailChange(e) }}
+                            type="email"
+                            id="newemail"
                             label="New Email" />
                     </Grid>
-                    <Button 
-                        className={classes.mtop} 
-                        onClick={onEmailConfirm} 
-                        variant="contained" 
-                        color="primary">Confirm</Button>
+                    <Link to="/profile/stats">
+                        <Button
+                            className={classes.mtop}
+                            onClick={onEmailConfirm}
+                            variant="contained"
+                            color="primary">Confirm</Button>
+                    </Link>
                 </>
             }
         </Grid>
