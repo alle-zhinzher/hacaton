@@ -5,6 +5,7 @@ import Settings from './Settings/Settings'
 import Info from './Info/Info'
 import { Grid, MenuItem, MenuList, makeStyles, Box } from '@material-ui/core';
 import { blue } from '@material-ui/core/colors'
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
     container: {
@@ -39,6 +40,11 @@ const useStyles = makeStyles({
     mbot: {
         marginBottom: "20px"
     },
+    list: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+    }
 });
 
 const Profile = (props) => {
@@ -48,7 +54,7 @@ const Profile = (props) => {
         const mockUser = {
             firstName: "John",
             lastName: "Doe",
-        }
+        };
         setUser({
             firstName: mockUser.firstName,
             lastName: mockUser.lastName,
@@ -59,6 +65,10 @@ const Profile = (props) => {
         firstName: "",
         lastName: "",
     });
+
+    const signOut = () => {
+        localStorage.clear();
+    };
 
     const classes = useStyles();
     return (
@@ -71,10 +81,11 @@ const Profile = (props) => {
             spacing={0}
         >
             <Grid item xs={12} sm={2}>
-                <MenuList>
+                <MenuList className={classes.list}>
                     <NavLink to="/profile/stats" className={classes.link} activeClassName={classes.active}><MenuItem align="center">Statistics</MenuItem></NavLink>
                     <NavLink to="/profile/info" className={classes.link} activeClassName={classes.active}><MenuItem>Profile Info</MenuItem></NavLink>
                     <NavLink to="/profile/settings" className={classes.link} activeClassName={classes.active}><MenuItem>Settings</MenuItem></NavLink>
+                    <Button onClick={signOut}>Sign out</Button>
                 </MenuList>
             </Grid>
             <Grid item xs={6}>
