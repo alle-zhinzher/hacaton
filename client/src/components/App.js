@@ -14,6 +14,7 @@ import GameInfo from './GameInfo/GameInfo';
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Prices from "./Prices/Prices";
+import Roulette from './Roulette/Roulette';
 // Styles
 import './App.scss';
 
@@ -33,6 +34,7 @@ class App extends Component {
                         <Route path="/login" component={SignIn} />
                         <Route path="/register" component={SignUp} />
                         <Route path="/prices" component={Prices} />
+                        <Route path="/game/roulette" component={Roulette} />
                     </Switch>
                     <Footer />
                 </Router>
