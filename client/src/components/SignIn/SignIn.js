@@ -40,7 +40,7 @@ class SignIn extends React.Component {
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Redirect to="/" />;
+            return <Redirect to="/profile" />;
         }
         return (
             <>

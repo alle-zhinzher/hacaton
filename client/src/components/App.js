@@ -6,7 +6,7 @@ import store from '../store';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Components
 import Main from './Main/Main';
-import Profile from './Profile/Profile';
+import ProfileWrap from './Profile/ProfileWrap';
 import ListOfGames from './ListOfGames/ListOfGames';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
@@ -25,7 +25,7 @@ class App extends Component {
                     <Header user={{ name: 'Player', money: 104 }} />
                     <Switch>
                         <Route path="/" exact component={Main} />
-                        <Route path="/profile" component={Profile} />
+                        <Route path="/profile" component={ProfileWrap} />
                         <Route path="/sing-in" component={SignIn} />
                         <Route path="/sing-up" component={SignUp} />
                         <Route path="/games" exact component={ListOfGames} />

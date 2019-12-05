@@ -34,6 +34,7 @@ export const register = (username, email, password, firstName, lastName) => disp
 
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {
+
     axios
         .get(url + "api/auth/user", tokenConfig(getState))
         .then(res => {
@@ -78,12 +79,9 @@ export const tokenConfig = getState => {
     // Headers
     const config = {
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": token
         }
     };
-    // If token, add to headers config
-    if (token) {
-        config.headers["Authorization"] = `Token ${token}`;
-    }
     return config;
 };

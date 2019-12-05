@@ -41,8 +41,24 @@ const useStyles = makeStyles({
     },
 });
 
-const Profile = () => {
+const Profile = (props) => {
 
+    useEffect(() => {
+        {/*Фетчить данные тут, это componentDidMount*/ }
+        const mockUser = {
+            firstName: "John",
+            lastName: "Doe",
+        }
+        setUser({
+            firstName: mockUser.firstName,
+            lastName: mockUser.lastName,
+        });
+    }, []);
+
+    const [user, setUser] = useState({
+        firstName: "",
+        lastName: "",
+    });
 
     const classes = useStyles();
     return (
@@ -64,8 +80,10 @@ const Profile = () => {
             <Grid item xs={6}>
                 <Grid container item xs={12} justify="center" className={classes.mbot}>
                     <Box className={classes.profilePicture}>
-                        {user.firstName[0]}{user.lastName[0]} {/*Можно зафетчить нейм и использовать тут инициалы*/}
-                    </Box>
+                        {props.user ?
+                            props.user.firstName[0] + props.user.lastName[0] : null
+                        }
+                        </Box>
                 </Grid>
                 <Route path="/profile" exact component={Stats} />
                 <Route path="/profile/stats" component={Stats} />
