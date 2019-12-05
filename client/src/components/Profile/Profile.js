@@ -7,6 +7,10 @@ import { Grid, MenuItem, MenuList, makeStyles, Box } from '@material-ui/core';
 import { blue } from '@material-ui/core/colors'
 
 const useStyles = makeStyles({
+    container: {
+        margin: "50px 0px",
+        minHeight: "100vh"
+    },
     profileImage: {
         width: "33%",
         height: "auto",
@@ -14,7 +18,9 @@ const useStyles = makeStyles({
     },
     link: {
         textDecoration: 'none',
-        color: "black"
+        color: "black",
+        display: "flex",
+        justifyContent: "center"
     },
     active: {
         color: "blue"
@@ -57,6 +63,7 @@ const Profile = () => {
     const classes = useStyles();
     return (
         <Grid
+            className={classes.container}
             container
             direction="row"
             justify="center"
