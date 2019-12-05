@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import CONSTANT from './constants'
-import io from 'socket.io-client'
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:8000');
 import './Roulette.scss'
 
 export default function Roulette() {
@@ -31,9 +32,7 @@ export default function Roulette() {
     const [moneyState, setMoneyState] = useState(100);
 
     /*---------- FUNCTIONS ----------*/
-    let socket;
     useEffect(() => {
-        socket = io();
         socket.on("makeBet", (msg) => {
             console.log(msg);
             setPlayersState(msg);
