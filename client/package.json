@@ -8,6 +8,8 @@
         "last 3 version"
     ],
     "dependencies": {
+        "@material-ui/core": "^4.7.1",
+        "axios": "^0.19.0",
         "prop-types": "^15.7.2",
         "react": "^16.11.0",
         "react-dom": "^16.11.0",
@@ -51,5 +53,6 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "proxy": "http://localhost:5000"
 }

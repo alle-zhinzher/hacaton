@@ -5,24 +5,40 @@ import store from '../store';
 // Router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Components
-import TestRedux from './TestRedux';
-import Main from "./Main/Main";
+import Main from './Main/Main';
+import Profile from './Profile/Profile';
+import ListOfGames from './ListOfGames/ListOfGames';
+import SignIn from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
+import GameInfo from './GameInfo/GameInfo';
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
+import Prices from "./Prices/Prices";
 // Styles
-import './App.scss'
+import './App.scss';
 
 class App extends Component {
     render() {
         return (
             <Provider store={store}>
                 <Router>
+                    <Header user={{ name: 'Player', money: 104 }} />
                     <Switch>
                         <Route path="/" exact component={Main} />
-                        <Route path="/t" component={TestRedux} />
+                        <Route path="/profile" component={Profile} />
+                        <Route path="/sing-in" component={SignIn} />
+                        <Route path="/sing-up" component={SignUp} />
+                        <Route path="/games" exact component={ListOfGames} />
+                        <Route path="/games/:name" component={GameInfo} />
+                        <Route path="/login" component={SignIn} />
+                        <Route path="/register" component={SignUp} />
+                        <Route path="/prices" component={Prices} />
                     </Switch>
+                    <Footer />
                 </Router>
             </Provider>
-        )
-    }
-}
+        );
+    };
+};
 
 export default App;

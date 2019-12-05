@@ -1,1 +1,3 @@
-export const TEST_REDUX = "TEST_REDUX";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const USER_LOADED = "USER_LOADED";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
