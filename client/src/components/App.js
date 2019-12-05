@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from './Main/Main';
 import ProfileWrap from './Profile/ProfileWrap';
 import ListOfGames from './ListOfGames/ListOfGames';
-import SignIn from './SignIn/SignIn';
-import SignUp from './SignUp/SignUp';
+import SingIn from './SingIn/SingIn';
+import SingUp from './SingUp/SingUp';
 import GameInfo from './GameInfo/GameInfo';
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
@@ -31,8 +31,8 @@ class App extends Component {
                         <Route path="/sing-up" component={SignUp} />
                         <Route path="/games" exact component={ListOfGames} />
                         <Route path="/games/:name" component={GameInfo} />
-                        <Route path="/login" component={SignIn} />
-                        <Route path="/register" component={SignUp} />
+                        <Route path="/login" component={SingIn} />
+                        <Route path="/register" component={SingUp} />
                         <Route path="/prices" component={Prices} />
                         <Route path="/game/roulette" component={Roulette} />
                     </Switch>
