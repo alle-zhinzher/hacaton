@@ -18,22 +18,31 @@ const Info = () => {
     }, []);
 
     const [isEditable, setIsEditable] = useState(false);
+    const [isValid, setIsValid] = useState(true);
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
         nickname: ""
     });
 
+    useEffect(()=>{
+        if (!user.firstName || !user.lastName || !user.nickname) {
+            setIsValid(false);
+        } else {
+            setIsValid(true);
+        }
+    });
+
     const handleFirstNameChange = (e) => {
-        setUser({ ...user, firstName: event.target.value });
+        setUser({ ...user, firstName: e.target.value });
     }
 
     const handleLastNameChange = (e) => {
-        setUser({ ...user, lastName: event.target.value });
+        setUser({ ...user, lastName: e.target.value });
     }
 
     const handleNicknameChange = (e) => {
-        setUser({ ...user, nickname: event.target.value });
+        setUser({ ...user, nickname: e.target.value });
     }
 
     const handleEdit = () => {
@@ -85,7 +94,7 @@ const Info = () => {
                         variant="contained"
                         color="primary">Edit</Button>
                     <Button
-                        disabled={!isEditable}
+                        disabled={!isEditable || !isValid}
                         onClick={handleSave}
                         variant="contained"
                         color="primary">Save Changes</Button>
