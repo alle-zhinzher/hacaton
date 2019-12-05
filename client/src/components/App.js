@@ -13,6 +13,7 @@ import SignUp from './SignUp/SignUp';
 import GameInfo from './GameInfo/GameInfo';
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import Prices from "./Prices/Prices";
 // Styles
 import './App.scss';
 
@@ -29,6 +30,7 @@ class App extends Component {
                         <Route path="/games/:name" component={GameInfo} />
                         <Route path="/login" component={SignIn} />
                         <Route path="/register" component={SignUp} />
+                        <Route path="/prices" component={Prices} />
                     </Switch>
                     <Footer />
                 </Router>
