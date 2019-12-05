@@ -4,6 +4,7 @@ import {
     REGISTER_SUCCESS,
     USER_LOADED,
     LOGIN_SUCCESS,
+    GET_STAT,
 } from "./types";
 
 const url = "http://localhost:5000/"
@@ -45,6 +46,20 @@ export const loadUser = () => (dispatch, getState) => {
         })
 };
 
+// LOAD USER STATiSTICS
+export const loadUserStat = () => (dispatch, getState) => {
+    axios
+        .get(url + "api/stat", tokenConfig(getState))
+        .then(res => {
+            dispatch({
+                type: GET_STAT,
+                payload: res.data
+            });
+        })
+};
+
+
+
 // LOGIN USER
 export const login = (email, password) => dispatch => {
     // Headers
@@ -69,6 +84,7 @@ export const login = (email, password) => dispatch => {
             });
         })
 };
+
 
 
 

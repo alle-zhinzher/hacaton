@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink, Route } from "react-router-dom";
-import Stats from './Stats/Stats'
-import Settings from './Settings/Settings'
+import StatsWrap from './Stats/StatWrap';
+import Settings from './Settings/Settings';
 import Info from './Info/Info'
 import { Grid, MenuItem, MenuList, makeStyles, Box } from '@material-ui/core';
 import { blue } from '@material-ui/core/colors'
@@ -85,8 +85,8 @@ const Profile = (props) => {
                         }
                         </Box>
                 </Grid>
-                <Route path="/profile" exact component={Stats} />
-                <Route path="/profile/stats" component={Stats} />
+                <Route path="/profile" exact component={StatsWrap} />
+                <Route path="/profile/stats" component={StatsWrap} />
                 <Route path="/profile/info" component={Info} />
                 <Route path="/profile/settings" component={Settings} />
             </Grid>

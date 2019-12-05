@@ -2,6 +2,7 @@ import {
     REGISTER_SUCCESS,
     USER_LOADED,
     LOGIN_SUCCESS,
+    GET_STAT,
 
 } from "../actions/types";
 
@@ -9,6 +10,7 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     user: null,
+    stat: null,
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +28,11 @@ export default function (state = initialState, action) {
                 ...state,
                 isAuthenticated: true,
                 user: action.payload
+            };
+        case GET_STAT:
+            return {
+                ...state,
+                stat: action.payload
             };
         default:
             return state;

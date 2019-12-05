@@ -3,49 +3,10 @@ import { Grid, CircularProgress } from '@material-ui/core';
 import StatsItem from './StatsItem';
 import LevelBar from './LevelBar';
 
-const Stats = () => {
+const Stats = (props) => {
 
-    const [user, setUser] = useState({
-        level: 0,
-        exp: 0
-    });
-    const [stats, setStats] = useState({
-        totalWinSum: 0,
-        totalWinCount: 0,
-        totalLoseSum: 0,
-        totalLoseCount: 0
-    });
-
-    useEffect(() => {
-        {/*Фетчить данные тут, это componentDidMount*/}
-        const mockStats = {
-            totalWinSum: 100,
-            totalWinCount: 2,
-            totalLoseSum: 300,
-            totalLoseCount: 3
-        };
-        setStats({
-            totalWinSum: mockStats.totalWinSum,
-            totalWinCount: mockStats.totalWinCount,
-            totalLoseSum: mockStats.totalLoseSum,
-            totalLoseCount: mockStats.totalLoseCount
-        });
-    },[]);
-
-    useEffect(() => {
-        {/*Фетчить данные тут, это componentDidMount*/}
-        const mockUser = {
-            level: 50,
-            exp: 750,
-        };
-        setUser({
-            level: mockUser.level,
-            exp: mockUser.exp
-        });
-    },[]);
-
-    const getProfit = () => {return stats.totalWinSum - stats.totalLoseSum};
-    const getTotalGames = () => {return stats.totalWinCount + stats.totalLoseCount};
+    const getProfit = () => { return props.stat.totalWinSum - props.stat.totalLoseSum };
+    const getTotalGames = () => { return props.stat.totalWinCount + props.stat.totalLoseCount };
 
     return (
         <Grid
@@ -55,13 +16,18 @@ const Stats = () => {
             alignItems="center"
             spacing={3}
         >
-            <LevelBar level={user.level} exp={user.exp}></LevelBar>
-            <StatsItem name="Total Winnings" number={stats.totalWinSum}></StatsItem>
-            <StatsItem name="Games Won" number={stats.totalWinCount}></StatsItem>
-            <StatsItem name="Total Lost" number={stats.totalLoseSum}></StatsItem>
-            <StatsItem name="Games Lost" number={stats.totalLoseCount}></StatsItem>
-            <StatsItem name="Profit" number={getProfit()}></StatsItem>
-            <StatsItem name="Games Played" number={getTotalGames()}></StatsItem>
+            {(props.user && props.stat) ?
+                <>
+                    <LevelBar level={props.user.level} exp={props.user.exp}></LevelBar>
+                    <StatsItem name="Total Winnings" number={props.stat.totalWinSum}></StatsItem>
+                    <StatsItem name="Games Won" number={props.stat.totalWinCount}></StatsItem>
+                    <StatsItem name="Total Lost" number={props.stat.totalLoseSum}></StatsItem>
+                    <StatsItem name="Games Lost" number={props.stat.totalLoseCount}></StatsItem>
+                    <StatsItem name="Profit" number={getProfit()}></StatsItem>
+                    <StatsItem name="Games Played" number={getTotalGames()}></StatsItem>
+                </>
+                : null
+            }
         </Grid>
     );
 }
