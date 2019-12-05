@@ -10,8 +10,11 @@ class ListOfGames extends React.Component {
         super(props);
 
         this.state = {
-            games: [],
-            game: {},
+            gameCard: {
+                'imgUrl': '',
+                'infoUrl': '',
+                'gameUrl': '',
+            },
         }
     }
 
@@ -19,7 +22,7 @@ class ListOfGames extends React.Component {
         return (
             <React.Fragment>
                 <ListOfGamesTopDescrtiption />
-                <ListOfGamesContent />
+                <ListOfGamesContent gameCard={this.state.gameCard} />
                 <ListOfGamesBottomDescrtiption />
             </React.Fragment>
         )
