@@ -14,7 +14,7 @@ import GameInfo from './GameInfo/GameInfo';
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Prices from "./Prices/Prices";
-import Roulette from './Roulette/Roulette';
+import RouletteWrap from './Roulette/RouletteWrap';
 // Styles
 import './App.scss';
 
@@ -27,14 +27,12 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={Main} />
                         <Route path="/profile" component={ProfileWrap} />
-                        <Route path="/sing-in" component={SignIn} />
-                        <Route path="/sing-up" component={SignUp} />
                         <Route path="/games" exact component={ListOfGames} />
                         <Route path="/games/:name" component={GameInfo} />
                         <Route path="/login" component={SingIn} />
                         <Route path="/register" component={SingUp} />
                         <Route path="/prices" component={Prices} />
-                        <Route path="/game/roulette" component={Roulette} />
+                        <Route path="/game/roulette" component={RouletteWrap} />
                     </Switch>
                     <Footer />
                 </Router>

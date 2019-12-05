@@ -10,11 +10,11 @@ const ROULETTE_NUMBERS = [
 export default {
     ROULETTE_NUMBERS,
 
-    DEFAULT_ROTATE_VALUE : -720,
+    DEFAULT_ROTATE_VALUE: -720,
 
-    ONE_SECTION_DEGREES : -360 / ROULETTE_NUMBERS.length,
+    ONE_SECTION_DEGREES: -360 / ROULETTE_NUMBERS.length,
 
-    CHIPS_ARRAY : [
+    CHIPS_ARRAY: [
         { color: "blue", value: 0 },
         { color: "white", value: 1 },
         { color: "red", value: 5 },
@@ -22,5 +22,5 @@ export default {
         { color: "black", value: 100 }
     ],
 
-    IMAGE_PATH: "assets/img/"
+    IMAGE_PATH: "../assets/img/"
 }

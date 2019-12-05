@@ -43,6 +43,10 @@ class Header extends React.Component {
         sideBarOpened: false
     }
 
+    componentDidUpdate() {
+        sessionStorage.money = `${this.props.user ? this.props.user.money : 100}`;
+    }
+
     toggleSideBar = open => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -65,14 +69,14 @@ class Header extends React.Component {
                             this.props.user ? (
                                 <>
                                     <Typography variant="h6" className="app-bar__menu-button" >
-                                        {this.props.user.user.money}$
+                                        {this.props.user.money ? this.props.user.money : null}$
                                     </Typography>
                                     <Link to='/prices' className="app-bar__avatar" >
                                         <Button className="app-bar__menu-button" variant="contained" color="secondary">
                                             Add money
                                     </Button>
                                     </Link>
-                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
+                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.username[0].toUpperCase()}</Avatar></Link>
                                 </>) : (<Button color="inherit">Login</Button>)
                         }
                     </Toolbar>
@@ -90,4 +94,4 @@ const mapStateToProps = state => ({
     user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, {loadUser})(Header);
+export default connect(mapStateToProps, { loadUser })(Header);

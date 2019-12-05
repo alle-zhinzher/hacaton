@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
+const config = require('config');
 const { updateUserStatistic } = require('../db/dao/statistics')
-
+const JWTconfig = config.get('JWTconfig');
 function Roulette(io) {
     this.io = io;
     this.gameState = "endGame";
@@ -14,9 +15,11 @@ Roulette.prototype.endGame = function () {
     this.gameState = "endGame";
     result = Math.floor(Math.random() * Math.floor(37));
     resultColor = (result == 0) ? "green" : (result % 2 == 0) ? "red" : "black";
+    Sum = 0;
     for (user in this.bets) {
+        Sum = 0;
         for (betType in this.bets[user]) {
-            const { id } = jwt.verify(token, JWTconfig.secret);
+            const { id } = jwt.verify(user, JWTconfig.secret);
             const bet = this.bets[user][betType];
             if (betType == resultColor) {
                 updateUserStatistic(id, bet);
@@ -24,17 +27,18 @@ Roulette.prototype.endGame = function () {
                 //добавить игроку user  на счет bet монет
             } else if (betType == result) {
                 //добавить игроку user на счет bet*35
+                Sum += bet * 35;
                 updateUserStatistic(id, bet * 35);
             }
             else {
                 //снять со счета user bet монет
-                updateUserStatistic(decodedId, bet * (-1));
+                updateUserStatistic(id, bet * (-1));
             }
 
         }
     }
     //TODO change all users money in db
-    this.io.emit("endGame", { result });
+    this.io.emit("endGame", { result, Sum });
     this.bets = {};
 }
 
@@ -57,7 +61,7 @@ Roulette.prototype.startGame = function () {
         //console.log(this.gameState);
         //console.log("starting game");
         this.gameState = "TakingBets";
-        setTimeout(this.endGame.bind(this), 45000);
+        setTimeout(this.endGame.bind(this), 3000);
         this.io.emit("startGame");
     }
     else {

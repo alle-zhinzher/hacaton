@@ -5,7 +5,7 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:8000');
 import './Roulette.scss'
 
-export default function Roulette() {
+export default function Roulette(props) {
 
     /*---------- STATES ----------*/
     const [gameState, setGameState] = useState(false);
@@ -29,7 +29,7 @@ export default function Roulette() {
 
     const [chipState, setChipState] = useState(25);
 
-    const [moneyState, setMoneyState] = useState(100);
+    const [moneyState, setMoneyState] = useState(parseInt(sessionStorage.money));
 
     /*---------- FUNCTIONS ----------*/
     useEffect(() => {
@@ -41,8 +41,11 @@ export default function Roulette() {
             console.log(msg);
             calculateRotateDegree(msg.result);
             setTableState(initialTableState);
+            setGameState(false);
         });
-        socket.on("startGame", () => { setGameState(true) });
+        socket.on("startGame", () => {
+            setGameState(true);
+        });
     }, [])
 
     function getIndex(number) {
@@ -67,83 +70,87 @@ export default function Roulette() {
             setMoneyState(money ? moneyState - money : moneyState + newTableState[value]);
             newTableState[value] = money ? newTableState[value] + money : 0;
             setTableState(newTableState);
-            socket.emit("makeBet", { user: "Я_Какая_то_Заглушка", bet: newTableState[value], betType: value });
+            socket.emit("makeBet", { user: localStorage.getItem("token"), bet: newTableState[value], betType: value });
         }
     }
 
     /*---------- RENDER ----------*/
     return (
         <>
-            {
-                gameState
-                    ? (
-                        <>
-                            <section className="roulette-container"
-                                style={{ background: `url('${CONSTANT.IMAGE_PATH}roulette-bg.png')` }}>
-                                <img alt="Roulette"
-                                    className="roulette-container__roulette"
-                                    src={`${CONSTANT.IMAGE_PATH}roulette.png`}
-                                    style={{
-                                        transform: `rotate(${rotationState}deg)`
-                                    }} />
-                                <p className="roulette-container__arrow"></p>
-                                <div className="roulette-container__table table">
+            <section className="roulette-container"
+                style={{ background: `url('${CONSTANT.IMAGE_PATH}roulette-bg.png')` }}>
+                {
+                    gameState
+                        ? null
+                        : (
+                            <button className="START"
+                                onClick={() => { socket.emit("startGame") }}>Start game</button>
+                        )
+                }
+                <img alt="Roulette"
+                    className="roulette-container__roulette"
+                    src={`${CONSTANT.IMAGE_PATH}roulette.png`}
+                    style={{
+                        transform: `rotate(${rotationState}deg)`
+                    }} />
+                <p className="roulette-container__arrow"></p>
+                <div className="roulette-container__table table">
+                    {
+                        tableValuesArray.map(cell => (
+                            <div key={cell}
+                                className={`table__cell
+                                                ${typeof cell === "string" ? "table__cell-big" : ""}`}
+                                onClick={() => makeRate(cell, chipState)}>
+                                <span className="table__cell-value">{cell}</span>
+                                <span className="table__cell-money">{tableState[cell] || null}</span>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div className="roulette-container__chip-table chip-table">
+                    <span className="chip-table__money">
+                        {`You have ${moneyState}$`}
+                    </span>
+                    {
+                        CONSTANT.CHIPS_ARRAY.map(e => (
+                            <div key={e.value}
+                                className={`chip-table__chip
+                                                    chip-table__chip-${e.color}
+                                                    ${e.value === chipState
+                                        ? "chip-table__chip-active"
+                                        : ""}`}
+                                onClick={() => setChipState(e.value)}>
+                                {e.value}
+                            </div>
+                        ))
+                    }
+                </div>
+                <section className="players-container"
+                    style={{ background: `url('${CONSTANT.IMAGE_PATH}roulette-bg.png')` }}>
+                    {
+                        Object.keys(playersState).map((player, num) => (
+                            <div key={num} className="players-container__player">
+                                <span className="players-container__player-name">Player{num}</span>
+                                <table className="players-container__player-data">
                                     {
-                                        tableValuesArray.map(cell => (
-                                            <div key={cell}
-                                                className={`table__cell
-                                ${typeof cell === "string" ? "table__cell-big" : ""}`}
-                                                onClick={() => makeRate(cell, chipState)}>
-                                                <span className="table__cell-value">{cell}</span>
-                                                <span className="table__cell-money">{tableState[cell] || null}</span>
-                                            </div>
+                                        Object.keys(playersState[player]).map((info, num) => (
+                                            playersState[player][info]
+                                                ? (
+                                                    <tr key={num} className="players-container__row">
+                                                        <td className="players-container__col players-container__col-name">{info}:</td>
+                                                        <td className="players-container__col players-container__col-value">{playersState[player][info]}</td>
+                                                    </tr>
+                                                )
+                                                : null
                                         ))
                                     }
-                                </div>
-                                <div className="roulette-container__chip-table chip-table">
-                                    <span className="chip-table__money">
-                                        {`You have ${moneyState}$`}
-                                    </span>
-                                    {
-                                        CONSTANT.CHIPS_ARRAY.map(e => (
-                                            <div key={e.value}
-                                                className={`chip-table__chip
-                                chip-table__chip-${e.color}
-                                ${e.value === chipState
-                                                        ? "chip-table__chip-active"
-                                                        : ""}`}
-                                                onClick={() => setChipState(e.value)}>
-                                                {e.value}
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            </section>
-                            <section className="players-container">
-                                {
-                                    Object.keys(playersState).map(player => (
-                                        <div className="players-container__player">
-                                            <span className="players-container__player-name">{player}</span>
-                                            <table className="players-container__player-data">
-                                                {
-                                                    Object.keys(playersState[player]).map(info => (
-                                                        <tr className="players-container__row">
-                                                            <td className="players-container__col players-container__col-name">{info}:</td>
-                                                            <td className="players-container__col players-container__col-value">{playersState[player][info]}</td>
-                                                        </tr>
-                                                    ))
-                                                }
-                                            </table>
-                                        </div>
-                                    ))
-                                }
-                            </section>
-                        </>
-                    )
-                    : (
-                        <button onClick={() => { socket.emit("startGame") }}>Start game</button>
-                    )
-            }
+                                </table>
+                            </div>
+                        ))
+                    }
+                </section>
+            </section>
+
             {/* <button onClick={() => {
                 calculateRotateDegree(parseInt(Math.random() * CONSTANT.ROULETTE_NUMBERS.length));
             }}>Rotate</button> */}
