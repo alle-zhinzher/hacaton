@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 //Components
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import PlayersList from "./PlayersList/PlayersList";
 import GameCard from "./GameCard/GameCard";
 
 //Styles
-import "./Main.scss"
-import Typography from "@material-ui/core/Typography";
+import "./Main.scss";
+import {Link} from "react-router-dom";
 
 export default class Main extends React.Component {
 
@@ -19,24 +21,26 @@ export default class Main extends React.Component {
     render() {
         return (
             <main className="main">
-                <section>
-                    <Typography variant="h1" gutterBottom>
-                        Title
+                <section className="h1">
+                    <Typography variant="h2" gutterBottom>
+                        Game Of The Year
                     </Typography>
-                    <Typography variant="body1" component="p" gutterBottom>
-                        Description
-                    </Typography>
+
                 </section>
 
                 <section>
-                    <h2>Our best players:</h2>
-                    <PlayersList
-                        players={[
-                            {name: "Player1", game: "Ruletka", level: 231},
-                            {name: "Player1", game: "Ruletka", level: 231},
-                            {name: "Player1", game: "Ruletka", level: 231}
-                        ]}
-                    />
+                    <img src="../../assets/img/photo-1537154835319-14f43d91ea98.jpg" className="main__banner" />
+                </section>
+
+                <section>
+                    <Typography variant="body1" component="p" gutterBottom>
+                        This site is dedicated to flash games in all their almost endless variety. Old and new
+                        small and large-scale, interesting and very interesting - all of them are collected here in
+                        rechargeable collection. With the development of the Internet, flash online mini-games began to gain all
+                        very popular as a means of entertainment in moments of relaxation, when you can play for free
+                        some favorite toy directly in the browser - that’s why they are also known
+                        like browser games.
+                    </Typography>
                 </section>
 
                 <section>
@@ -44,9 +48,23 @@ export default class Main extends React.Component {
 
                     <GameCard
                         title="Ruletka"
-                        description="No description"
-                        image="https://images.unsplash.com/photo-1567517024911-289435152490?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+                        description="With the development of the Internet, flash online mini-games began to gain all
+                        very popular as a means of entertainment in moments of relaxation"
+                        image="../../../../assets/img/photo-1567517024911-289435152490.jpg"
                     />
+                </section>
+
+                <section>
+                    <img src="../../assets/img/photo-1567517024911-289435152490.jpg" className="main__banner" />
+                </section>
+
+                <section>
+                    <h2>Join us!</h2>
+                    <Link to="./signin" className="main__button">
+                        <Button variant="contained" color="secondary" size="large">
+                            Create an account
+                        </Button>
+                    </Link>
                 </section>
             </main>
         );
