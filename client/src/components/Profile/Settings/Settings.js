@@ -84,9 +84,6 @@ const Settings = () => {
             {passwordPressed &&
                 <>
                     <Grid item>
-                        <TextField type="password" id="oldpass" label="Old Password" />
-                    </Grid>
-                    <Grid item>
                         <TextField
                             onChange={(e) => { handlePasswordChange(e) }}
                             type="password"
