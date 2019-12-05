@@ -47,3 +47,18 @@
     margin: auto;
 }
 
+.linkWrap{
+    width: 80px;
+    border-radius: 5px;
+    margin: auto;
+   
+    &:hover{
+        background: rgb(61, 61, 180);
+    }
+}   
+
+.play__link{
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+}

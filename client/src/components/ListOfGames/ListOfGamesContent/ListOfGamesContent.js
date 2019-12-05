@@ -127,7 +127,7 @@ export default function ListOfGamesContent() {
                                         <Link className='game-container__info' to='/games/roulette'> Game info</Link>
                                     </Button>
                                     <Button size="small" color="primary">
-                                        <Link className='game-container__play' to="/">PLAY NOW</Link>
+                                        <Link className='game-container__play' to="/game/roulette">PLAY NOW</Link>
                                     </Button>
                                 </CardActions>
                             </Card>

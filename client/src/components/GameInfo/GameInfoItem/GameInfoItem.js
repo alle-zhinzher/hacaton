@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 import './GameInfoItem.scss';
 
 
@@ -8,10 +9,6 @@ const GameInfoItem = ({ game }) => (
     <div className='wrapper'>
         <h1 className='main-title'>{game.heading}</h1>
         <div className='main-image' style={{ backgroundImage: `url(${game.mainImage})` }}>mainimg</div>
-
-
-
-
 
         <div className='top-description'>
             <p className='top-description__content'>{game.descriptionText}</p>
@@ -36,7 +33,9 @@ const GameInfoItem = ({ game }) => (
             <h3 className='details__caption'>{game.detailCaption}</h3>
             <p className='details__about'>{game.detailAbout}</p>
         </div>
-
+        <div className='linkWrap'>
+            <Link to='/game/roulette' className='play__link' >PLAY</Link>
+        </div>
 
     </div>
 );
