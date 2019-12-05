@@ -50,11 +50,8 @@ export default class SideBar extends React.Component{
                                     </ListItem>
                                 </Link>
                             ) : (
-<<<<<<< HEAD
+
                                 <Link to='/login' component="button" className="button-container side-bar__link">
-=======
-                                <Link to='./singin' component="button" className="button-container">
->>>>>>> origin/routesFix
                                     <Button variant="contained" color="primary" className="login-button">
                                         Log in
                                     </Button>
