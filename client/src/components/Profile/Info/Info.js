@@ -4,8 +4,8 @@ import { TextField, Grid, Button, ButtonGroup } from '@material-ui/core';
 
 const Info = () => {
 
-    useEffect(()=>{
-        {/*Фетчить данные тут, это componentDidMount*/}
+    useEffect(() => {
+        {/*Фетчить данные тут, это componentDidMount*/ }
         const mockUser = {
             firstName: "John",
             lastName: "Doe",
@@ -16,7 +16,7 @@ const Info = () => {
             lastName: mockUser.lastName,
             nickname: mockUser.nickname,
         });
-    },[]);
+    }, []);
 
     const [isEditable, setIsEditable] = useState(false);
     const [user, setUser] = useState({
@@ -25,6 +25,18 @@ const Info = () => {
         nickname: ""
     });
 
+    const handleFirstNameChange = (e) => {
+        setUser({ ...user, firstName: event.target.value });
+    }
+
+    const handleLastNameChange = (e) => {
+        setUser({ ...user, lastName: event.target.value });
+    }
+
+    const handleNicknameChange = (e) => {
+        setUser({ ...user, nickname: event.target.value });
+    }
+
     const handleEdit = () => {
         setIsEditable(true);
     };
@@ -32,18 +44,6 @@ const Info = () => {
     const handleSave = () => {
         setIsEditable(false);
         console.log(user);
-    }
-
-    const handleFirstNameChange = (e) => {
-        setUser({...user, firstName: event.target.value});
-    }
-
-    const handleLastNameChange = (e) => {
-        setUser({...user, lastName: event.target.value});
-    }
-
-    const handleNicknameChange = (e) => {
-        setUser({...user, nickname: event.target.value});
     }
 
     return (
@@ -55,18 +55,41 @@ const Info = () => {
             spacing={1}
         >
             <Grid item>
-                <TextField disabled={!isEditable} onChange={(e)=>{handleFirstNameChange(e)}} value={user.firstName} id="firstname" label="Name" />
+                <TextField
+                    disabled={!isEditable}
+                    onChange={(e) => { handleFirstNameChange(e) }}
+                    value={user.firstName}
+                    id="firstname"
+                    label="Name" />
             </Grid>
             <Grid item>
-                <TextField disabled={!isEditable} onChange={(e)=>{handleLastNameChange(e)}} value={user.lastName} id="lastname" label="Surname" />
+                <TextField
+                    disabled={!isEditable}
+                    onChange={(e) => { handleLastNameChange(e) }}
+                    value={user.lastName}
+                    id="lastname"
+                    label="Surname" />
             </Grid>
             <Grid item>
-                <TextField disabled={!isEditable} onChange={(e)=>{handleNicknameChange(e)}} value={user.nickname} id="nickname" label="Nickname" />
+                <TextField
+                    disabled={!isEditable}
+                    onChange={(e) => { handleNicknameChange(e) }}
+                    value={user.nickname}
+                    id="nickname"
+                    label="Nickname" />
             </Grid>
             <Grid item>
                 <ButtonGroup>
-                    <Button disabled={isEditable} onClick={handleEdit} variant="contained" color="primary">Edit</Button>
-                    <Button disabled={!isEditable} onClick={handleSave} variant="contained" color="primary">Save Changes</Button>
+                    <Button
+                        disabled={isEditable}
+                        onClick={handleEdit}
+                        variant="contained"
+                        color="primary">Edit</Button>
+                    <Button
+                        disabled={!isEditable}
+                        onClick={handleSave}
+                        variant="contained"
+                        color="primary">Save Changes</Button>
                 </ButtonGroup>
             </Grid>
         </Grid>

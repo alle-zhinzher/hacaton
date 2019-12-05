@@ -70,8 +70,14 @@ const Settings = () => {
         >
             <Grid item>
                 <ButtonGroup>
-                    <Button onClick={onPasswordPress} variant="contained" color="secondary">Change Password</Button>
-                    <Button onClick={onEmailPress} variant="contained" color="secondary">Change Email</Button>
+                    <Button 
+                        onClick={onPasswordPress} 
+                        variant="contained" 
+                        color="secondary">Change Password</Button>
+                    <Button 
+                        onClick={onEmailPress} 
+                        variant="contained" 
+                        color="secondary">Change Email</Button>
                 </ButtonGroup>
             </Grid>
             {passwordPressed &&
@@ -80,17 +86,33 @@ const Settings = () => {
                         <TextField type="password" id="oldpass" label="Old Password" />
                     </Grid>
                     <Grid item>
-                        <TextField onChange={(e) => { handlePasswordChange(e) }} type="password" id="newpass" label="New Password" />
+                        <TextField 
+                            onChange={(e) => { handlePasswordChange(e) }} 
+                            type="password" 
+                            id="newpass" 
+                            label="New Password" />
                     </Grid>
-                    <Button className={classes.mtop} onClick={onPasswordConfirm} variant="contained" color="primary">Confirm</Button>
+                    <Button 
+                        className={classes.mtop} 
+                        onClick={onPasswordConfirm} 
+                        variant="contained" 
+                        color="primary">Confirm</Button>
                 </>
             }
             {emailPressed &&
                 <>
                     <Grid item>
-                        <TextField onChange={(e) => { handleEmailChange(e) }} type="email" id="newemail" label="New Email" />
+                        <TextField 
+                            onChange={(e) => { handleEmailChange(e) }} 
+                            type="email" 
+                            id="newemail" 
+                            label="New Email" />
                     </Grid>
-                    <Button className={classes.mtop} onClick={onEmailConfirm} variant="contained" color="primary">Confirm</Button>
+                    <Button 
+                        className={classes.mtop} 
+                        onClick={onEmailConfirm} 
+                        variant="contained" 
+                        color="primary">Confirm</Button>
                 </>
             }
         </Grid>
