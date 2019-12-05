@@ -66,7 +66,7 @@ class Header extends React.Component {
                             this.props.user ? (
                                     <>
                                         <Typography variant="h6" className="app-bar__menu-button" >
-                                            {this.props.user.user.money}$
+                                            {this.props.user.money}$
                                         </Typography>
                                         <Button className="app-bar__menu-button" variant="contained" color="secondary">
                                             Add money

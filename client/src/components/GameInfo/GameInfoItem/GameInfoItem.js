@@ -39,7 +39,10 @@ const GameInfoItem = ({ game }) => (
             <p className='details__about'>{game.detailAbout}</p>
         </section>
         <section className='linkWrap'>
-            <Link to='/game/roulette' className='play__link' ><Button variant="contained" color="secondary">Play</Button></Link>
+            <Button size="large" color="primary">
+                {game.external? <a className='game-container__play' href={game.link+'?user='+localStorage.getItem("token")}>PLAY NOW</a> :
+                    <Link className='game-container__play' to={game.link}>PLAY NOW</Link>}
+            </Button>
         </section>
 
     </div>
@@ -50,3 +53,5 @@ GameInfoItem.propTypes = {
 };
 
 export default GameInfoItem;
+
+

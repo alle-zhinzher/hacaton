@@ -143,7 +143,7 @@ export default function ListOfGamesContent() {
                                         <Link className='game-container__info' to={card.info}> Game info</Link>
                                     </Button>
                                     <Button size="small" color="primary">
-                                        {card.external? <a className='game-container__play' href={card.link}>PLAY NOW</a> :
+                                        {card.external? <a className='game-container__play' href={card.link+'?user='+localStorage.getItem("token")}>PLAY NOW</a> :
                                             <Link className='game-container__play' to={card.link}>PLAY NOW</Link>}
                                     </Button>
                                 </CardActions>
