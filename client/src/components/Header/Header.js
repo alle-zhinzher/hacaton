@@ -67,10 +67,12 @@ class Header extends React.Component {
                                     <Typography variant="h6" className="app-bar__menu-button" >
                                         {this.props.user.user.money}$
                                     </Typography>
-                                    <Button className="app-bar__menu-button" variant="contained" color="secondary">
-                                        Add money
+                                    <Link to='/prices' className="app-bar__avatar" >
+                                        <Button className="app-bar__menu-button" variant="contained" color="secondary">
+                                            Add money
                                     </Button>
-                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.user.username[0].toUpperCase()}</Avatar></Link>
+                                    </Link>
+                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
                                 </>) : (<Button color="inherit">Login</Button>)
                         }
                     </Toolbar>
@@ -88,4 +90,4 @@ const mapStateToProps = state => ({
     user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, null = git)(Header);
+export default connect(mapStateToProps, {loadUser})(Header);
