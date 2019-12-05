@@ -1,1 +1,1 @@
-export const TEST_REDUX = "TEST_REDUX";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
