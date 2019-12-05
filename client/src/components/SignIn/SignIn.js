@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const styles = {
     form: {

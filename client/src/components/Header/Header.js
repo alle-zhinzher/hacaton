@@ -1,6 +1,9 @@
 import React from "react";
 
-import {Link} from "react-router-dom";
+//Redux
+import { connect } from 'react-redux';
+
+import { Link } from "react-router-dom";
 //Components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,7 +33,7 @@ const styles = {
     }
 };
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 
     state = {
         sideBarOpened: false
@@ -40,7 +43,7 @@ export default class Header extends React.Component {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-        this.setState({sideBarOpened: open});
+        this.setState({ sideBarOpened: open });
     };
 
     render() {
@@ -55,15 +58,15 @@ export default class Header extends React.Component {
                             GameOfTheYear
                         </Typography>
                         {
-                            this.props.user? (
+                            this.props.user ? (
                                 <>
                                     <Typography variant="h6" className="app-bar__menu-button" >
-                                        {this.props.user.money}$
+                                        {this.props.user.user.money}$
                                     </Typography>
-                                    <Button className="app-bar__menu-button"  variant="contained" color="secondary">
+                                    <Button className="app-bar__menu-button" variant="contained" color="secondary">
                                         Add money
                                     </Button>
-                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
+                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.user.username[0].toUpperCase()}</Avatar></Link>
                                 </>) : (<Button color="inherit">Login</Button>)
                         }
                     </Toolbar>
@@ -76,3 +79,9 @@ export default class Header extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    user: state.authReducer.user
+});
+
+export default connect(mapStateToProps, null)(Header);
