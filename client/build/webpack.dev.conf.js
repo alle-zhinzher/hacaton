@@ -8,7 +8,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     devServer: {
         contentBase: baseWebpackConfig.externals.paths.dist,
         publicPath: "/",
-        port: 8081,
+        port: 8080,
         historyApiFallback: true,
     },
     plugins: [

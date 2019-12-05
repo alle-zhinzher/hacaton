@@ -1,12 +1,9 @@
 import React from "react";
 
-<<<<<<< HEAD
 //Redux
 import { connect } from 'react-redux';
 import { loadUser } from '../../actions/auth';
 
-=======
->>>>>>> origin/routesFix
 import { Link } from "react-router-dom";
 //Components
 import AppBar from '@material-ui/core/AppBar';
@@ -68,21 +65,12 @@ class Header extends React.Component {
                             this.props.user ? (
                                 <>
                                     <Typography variant="h6" className="app-bar__menu-button" >
-                                        {this.props.user.money}$
+                                        {this.props.user.user.money}$
                                     </Typography>
-<<<<<<< HEAD
                                     <Button className="app-bar__menu-button" variant="contained" color="secondary">
                                         Add money
                                     </Button>
-                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.username[0].toUpperCase()}</Avatar></Link>
-=======
-                                    <Link to='/prices' className="app-bar__avatar" >
-                                        <Button className="app-bar__menu-button" variant="contained" color="secondary">
-                                            Add money
-                                    </Button>
-                                    </Link>
-                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
->>>>>>> origin/routesFix
+                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.user.username[0].toUpperCase()}</Avatar></Link>
                                 </>) : (<Button color="inherit">Login</Button>)
                         }
                     </Toolbar>
@@ -90,7 +78,6 @@ class Header extends React.Component {
                 <SideBar
                     opened={this.state.sideBarOpened}
                     toggle={this.toggleSideBar}
-                    user={this.props.user}
                 />
             </>
         );
@@ -101,4 +88,4 @@ const mapStateToProps = state => ({
     user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, { loadUser })(Header);
+export default connect(mapStateToProps, null = git)(Header);
