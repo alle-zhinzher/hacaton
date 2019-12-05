@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink, Route } from "react-router-dom";
 import Stats from './Stats/Stats'
 import Settings from './Settings/Settings'
 import Info from './Info/Info'
 import { Grid, MenuItem, MenuList, makeStyles, Box } from '@material-ui/core';
-import {blue} from '@material-ui/core/colors'
+import { blue } from '@material-ui/core/colors'
 
 const useStyles = makeStyles({
     profileImage: {
@@ -29,10 +29,31 @@ const useStyles = makeStyles({
         fontSize: "76px",
         backgroundColor: blue[300],
         color: "white"
-    }
+    },
+    mbot: {
+        marginBottom: "20px"
+    },
 });
 
 const Profile = () => {
+
+    useEffect(() => {
+        {/*Фетчить данные тут, это componentDidMount*/ }
+        const mockUser = {
+            firstName: "John",
+            lastName: "Doe",
+        }
+        setUser({
+            firstName: mockUser.firstName,
+            lastName: mockUser.lastName,
+        });
+    }, []);
+
+    const [user, setUser] = useState({
+        firstName: "",
+        lastName: "",
+    });
+
     const classes = useStyles();
     return (
         <Grid
@@ -50,9 +71,9 @@ const Profile = () => {
                 </MenuList>
             </Grid>
             <Grid item xs={6}>
-                <Grid container item xs={12} justify="center">
-                    <Box className = {classes.profilePicture}>
-                        VA {/*Можно зафетчить нейм и использовать тут инициалы*/}
+                <Grid container item xs={12} justify="center" className={classes.mbot}>
+                    <Box className={classes.profilePicture}>
+                        {user.firstName[0]}{user.lastName[0]} {/*Можно зафетчить нейм и использовать тут инициалы*/}
                     </Box>
                 </Grid>
                 <Route path="/profile" exact component={Stats} />

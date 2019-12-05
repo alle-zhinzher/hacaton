@@ -2,9 +2,6 @@ import React from 'react';
 import { Typography, makeStyles, Box, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
-    container: {
-        margin: '50px 0px 25px'
-    },
     expContainer: {
         border: "1px solid black",
         borderRadius: "5px",
@@ -25,7 +22,7 @@ const LevelBar = ({ level, exp }) => {
     };
 
     return (
-        <Grid container item xs={12} spacing={3} className={classes.container}>
+        <Grid container item xs={12} spacing={3}>
             <Grid item xs={12}>
                 <Typography align="center" variant="h4">
                     You are level {level}!
