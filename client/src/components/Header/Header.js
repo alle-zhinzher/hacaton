@@ -67,7 +67,7 @@ export default class Header extends React.Component {
                                     <Button className="app-bar__menu-button"  variant="contained" color="secondary">
                                         Add money
                                     </Button>
-                                    <Link to='./profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
+                                    <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
                                 </>) : (<Button color="inherit">Login</Button>)
                         }
                     </Toolbar>
