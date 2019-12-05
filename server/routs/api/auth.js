@@ -37,4 +37,21 @@ router.get('/user', auth, (req, res) => {
 });
 
 
+// @route   POST api/auth/login
+// @desc    Login User
+// @access  Public
+router.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    users.getUserByEmail(email)
+        .then(user => {
+            if (!user) { res.status(404).json({ msg: "User not found" }) }
+            const passwordIsValid = bcActions.comparePasswords(password, user.password)
+            passwordIsValid ?
+                res.status(200).send({ token: genToken(user._id), user })
+                :
+                res.status(401).json({ msg: "Password does not match" })
+        })
+});
+
+
 module.exports = router;

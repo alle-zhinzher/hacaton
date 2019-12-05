@@ -2,8 +2,11 @@ import React from "react";
 
 import Input from "@material-ui/core/Input";
 import Button from '@material-ui/core/Button';
+//Redux
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const styles = {
     form: {
@@ -21,29 +24,46 @@ const styles = {
     }
 };
 
-export default class SignIn extends React.Component {
+class SignIn extends React.Component {
+    state = {
+        email: '',
+        password: '',
+    }
+
+    onSubmit = e => {
+        e.preventDefault();
+        this.props.login(this.state.email, this.state.password);
+    };
+
+    onChange = e => this.setState({ [e.target.name]: e.target.value });
+
 
     render() {
         return (
             <>
-                <form>
+                <form onSubmit={this.onSubmit}>
                     <Input
                         placeholder="Email"
                         type="email"
+                        name="email"
                         inputProps={{
                             'aria-label': 'description',
                         }}
                         style={styles.input}
+                        onChange={this.onChange}
+
                     />
                     <Input
                         placeholder="Password"
                         type="password"
+                        name="password"
                         inputProps={{
                             'aria-label': 'description',
                         }}
                         style={styles.input}
+                        onChange={this.onChange}
                     />
-                    <Button variant="contained" color="primary" style={styles.button}>
+                    <Button type="submit" variant="contained" color="primary" style={styles.button}>
                         Log in
                     </Button>
 
@@ -51,5 +71,13 @@ export default class SignIn extends React.Component {
                 </form>
             </>
         );
-    }
+    } SignIn
 }
+
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(SignIn);
+SignIn
