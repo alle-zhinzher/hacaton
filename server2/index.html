@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tic Tac Toe</title>
+    <meta charset="UTF-8">
+    <link href="./styles/site.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Your Symbol: <span id="symbol">waiting...</span></h1>
+    <div class="board">
+        <button class="cell" id="c0"></button>
+        <button class="cell" id="c1"></button>
+        <button class="cell" id="c2"></button>
+        <button class="cell" id="c3"></button>
+        <button class="cell" id="c4"></button>
+        <button class="cell" id="c5"></button>
+        <button class="cell" id="c6"></button>
+        <button class="cell" id="c7"></button>
+        <button class="cell" id="c8"></button>
+        <div id="messages">Waiting for opponent to join...</div>
+    </div>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./app/tictactoe.js"></script>
+</body>
+
+</html>
