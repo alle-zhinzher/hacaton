@@ -4,8 +4,9 @@ import {
     REGISTER_SUCCESS,
 } from "./types";
 
+const url = "http://localhost:5000/"
 
-export const register = ({ username, password, email, firstName, lastName }) => dispatch => {
+export const register = (username, email, password, firstName, lastName) => dispatch => {
     // Headers
     const config = {
         headers: {
@@ -13,10 +14,10 @@ export const register = ({ username, password, email, firstName, lastName }) => 
         }
     };
     // Request Body
+    console.log(username, email, password, firstName, lastName)
     const body = JSON.stringify({ username, email, password, firstName, lastName });
-
     axios
-        .post("api/user", body, config)
+        .post(url + "api/user", body, config)
         .then(res => {
             dispatch({
                 type: REGISTER_SUCCESS,

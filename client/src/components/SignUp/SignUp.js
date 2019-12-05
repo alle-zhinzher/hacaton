@@ -1,8 +1,11 @@
 import React from "react";
-
+// Material
 import Input from "@material-ui/core/Input";
 import Button from '@material-ui/core/Button';
-
+// Redux
+import { connect } from "react-redux";
+import { register } from "../../actions/auth";
+//Router
 import { Link } from "react-router-dom";
 
 const styles = {
@@ -21,7 +24,7 @@ const styles = {
     }
 };
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
     state = {
         username: '',
         password: '',
@@ -33,7 +36,13 @@ export default class SignUp extends React.Component {
 
     onSubmit = e => {
         e.preventDefault();
-        console.log(this.state.username, this.state.password);
+        this.props.register(
+            this.state.username,
+            this.state.email,
+            this.state.password,
+            this.state.firstName,
+            this.state.lastName,
+        )
     };
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -113,3 +122,9 @@ export default class SignUp extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.authReducer.isAuthenticated,
+    errorMsg: state.authReducer.errorMsg,
+});
+export default connect(mapStateToProps, { register })(SignUp);

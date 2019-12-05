@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
         password,
         firstName,
         lastName } = req.body;
-
+    console.log(req.body)
     users.registerUser(username, email, password, firstName, lastName)
         .then(user => {
             res.status(200).send({ token: genToken(user._id), user });

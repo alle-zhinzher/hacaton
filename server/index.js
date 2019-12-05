@@ -1,14 +1,15 @@
-const path = require('path');
-const express = require('express');
 const config = require('config');
-
 const serverConfig = config.get('server');
 // App initialization
+const express = require('express');
+var cors = require('cors')
+// app initialization
 const app = express();
 app.use(express.json())
-
 // Connect database
 require('./db/connection/mongoose');
+//Allow CORS
+app.use(cors())
 // Middleware
 app.use(require('./routs/middleware/logger'));
 // API routs
