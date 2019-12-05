@@ -25,6 +25,7 @@ const Settings = () => {
 
     const [passwordPressed, setPasswordPressed] = useState(true);
     const [emailPressed, setEmailPressed] = useState(false);
+    const [confirmIsValid, setConfirmIsValid] = useState(false);
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -36,6 +37,11 @@ const Settings = () => {
     }
 
     const handlePasswordChange = (e) => {
+        if (!e.target.value) {
+            setConfirmIsValid(false);
+        } else {
+            setConfirmIsValid(true);
+        }
         setUser({ ...user, password: e.target.value });
     }
 
@@ -50,6 +56,11 @@ const Settings = () => {
     }
 
     const handleEmailChange = (e) => {
+        if (!e.target.value) {
+            setConfirmIsValid(false);
+        } else {
+            setConfirmIsValid(true);
+        }
         setUser({ ...user, email: e.target.value });
     }
 
@@ -92,6 +103,7 @@ const Settings = () => {
                     </Grid>
                     <Link to="/profile/stats">
                         <Button
+                            disabled={!confirmIsValid}
                             className={classes.mtop}
                             onClick={onPasswordConfirm}
                             variant="contained"
@@ -110,6 +122,7 @@ const Settings = () => {
                     </Grid>
                     <Link to="/profile/stats">
                         <Button
+                            disabled={!confirmIsValid}
                             className={classes.mtop}
                             onClick={onEmailConfirm}
                             variant="contained"
