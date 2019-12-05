@@ -31,7 +31,7 @@ export default class MediaCard extends React.Component{
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="medium" color="secondary" variant="contained">
+                    <Button size="medium" color="secondary" variant="contained" style={{margin: '0 auto'}}>
                         Enjoy now
                     </Button>
                 </CardActions>
