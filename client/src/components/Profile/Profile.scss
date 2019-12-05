@@ -1,0 +1,36 @@
+container {
+    margin: "50px 0px";
+    min-height: "100vh";
+}
+
+profileImage {
+    width: "33%";
+    height: "auto";
+    min-width: "200px"
+}
+
+link {
+    text-decoration: 'none';
+    color: "black";
+    display: "flex";
+    justify-content: "center";
+}
+
+active {
+    color: "blue"
+}
+
+profilePicture {
+    width: "200px";
+    height: "200px";
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    border-radius: "50%";
+    font-size: "76px";
+    background-color: blue;
+    color: "white"
+}
+mbot {
+    margin-bottom: "20px"
+}

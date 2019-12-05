@@ -1,0 +1,64 @@
+.wrapper{
+    width: 1280px;
+    margin: auto;
+}
+
+.main-title{
+    width: 700px;
+    margin: auto;
+}
+
+.main-image{
+    width: 700px;
+    height: 400px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.top-description{
+    display: flex;
+    width: 700px;
+    margin: auto;
+    &__content{
+        width: 60%;
+        padding: 20px;
+    }
+}
+
+.features{
+    width: 40%;
+    padding: 20px;
+}
+
+.gallery{
+    display: flex;
+    justify-content: space-evenly;
+    width: 700px;
+    margin: auto;
+    &__item{
+        width: 300px;
+        height: 250px;
+        border-radius: 5px;
+    }
+}
+
+.details{
+    width: 700px;
+    margin: auto;
+}
+
+.linkWrap{
+    width: 80px;
+    border-radius: 5px;
+    margin: auto;
+   
+    &:hover{
+        background: rgb(61, 61, 180);
+    }
+}   
+
+.play__link{
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+}
