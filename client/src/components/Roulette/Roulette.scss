@@ -101,3 +101,35 @@
 
     &__chip-active{box-shadow: 0 0 5px white;}
 }
+
+.players-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    margin: 25px auto;
+
+    &__player{
+        padding: 10px;
+        background: brown;
+    }
+
+    &__player-name{
+        font-size: 2em;
+    }
+
+    &__player-data{
+        display: flex;
+        flex-wrap: wrap;
+        width: 350px;
+    }
+
+    &__row{
+        min-width: 50px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    &__col{
+        display: inline-block;
+    }
+}
