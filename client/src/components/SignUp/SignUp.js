@@ -3,15 +3,15 @@ import React from "react";
 import Input from "@material-ui/core/Input";
 import Button from '@material-ui/core/Button';
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const styles = {
     form: {
-        maxWidth: '320px',
+        width: '320px',
         margin: '0 auto'
     },
     input: {
-        width: '100%',
+        width: '50%',
         marginBottom: '1rem'
     },
     button: {
@@ -34,7 +34,7 @@ export default class SignUp extends React.Component {
                             'aria-label': 'description',
                         }}
                         style={styles.input}
-                    />
+                    /><br />
                     <Input
                         placeholder="Password"
                         type="password"
@@ -42,7 +42,7 @@ export default class SignUp extends React.Component {
                             'aria-label': 'description',
                         }}
                         style={styles.input}
-                    />
+                    /><br />
                     <Input
                         placeholder="Confirm password"
                         type="password"
@@ -50,7 +50,23 @@ export default class SignUp extends React.Component {
                             'aria-label': 'description',
                         }}
                         style={styles.input}
-                    />
+                    /><br />
+                    <Input
+                        placeholder="First Name"
+                        type="text"
+                        inputProps={{
+                            'aria-label': 'firstName',
+                        }}
+                        style={styles.input}
+                    /><br />
+                    <Input
+                        placeholder="Last Name"
+                        type="text"
+                        inputProps={{
+                            'aria-lnnabel': 'lastName',
+                        }}
+                        style={styles.input}
+                    /><br />
                     <Button variant="contained" color="primary" style={styles.button}>
                         Create account
                     </Button>
