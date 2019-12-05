@@ -64,7 +64,32 @@ socket.on('move.made', function (data) {
     document.getElementById(data.position).innerText = data.symbol;
     if(isGameOver()) {
         if (isFullyFilled(getBoard())) messageOutput.innerText = 'Game over. Dead heat';
-        else messageOutput.innerText = myTurn ? 'Game over. You won!' : 'Game over. You lost.';
+        else if (messageOutput.innerText = myTurn) {
+            let urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams.get("user"));
+            let user = urlParams.get("user");
+            fetch("http://localhost:5000/api/stat/update", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': user
+                },
+                method: "POST",
+                body: JSON.stringify({sum: 50 })
+            }).then(() => {messageOutput.innerText = 'Game over. You won!'; location.reload()});
+        }
+        else {
+            let urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams.get("user"));
+            let user = urlParams.get("user");
+            fetch("http://localhost:5000/api/stat/update", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': user
+                },
+                method: "POST",
+                body: JSON.stringify({sum: -50 })
+            }).then(() => {messageOutput.innerText = 'Game over. You lost.'; location.reload()});
+        }
         disableCellsSwitcher(true);
     }
     else switchTurn();
