@@ -5,7 +5,7 @@ import {
 } from "./types";
 
 
-export const register = ({ username, password, email }) => dispatch => {
+export const register = ({ username, password, email, firstName, lastName }) => dispatch => {
     // Headers
     const config = {
         headers: {
@@ -16,24 +16,14 @@ export const register = ({ username, password, email }) => dispatch => {
     const body = JSON.stringify({ username, email, password, firstName, lastName });
 
     axios
-        .post("/api/auth/", body, config)
+        .post("api/user", body, config)
         .then(res => {
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: {
                     ...res.data,
-                    'msg': {},
                     'status': null,
                 }
             });
         })
-        .catch(err => {
-            dispatch({
-                type: REGISTER_FAIL,
-                payload: {
-                    'errorMsg': err.response.data,
-                    'errorStatus': err.response.status,
-                }
-            });
-        });
 };
