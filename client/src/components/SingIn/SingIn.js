@@ -29,7 +29,7 @@ class SingIn extends React.Component {
     state = {
         email: '',
         password: '',
-    }
+    };
 
     onSubmit = e => {
         e.preventDefault();
@@ -84,4 +84,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { login })(SingIn);
-SingIn

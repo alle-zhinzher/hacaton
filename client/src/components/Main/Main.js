@@ -60,11 +60,17 @@ export default class Main extends React.Component {
 
                 <section>
                     <h2>Join us!</h2>
-                    <Link to="./signin" className="main__button">
+                    <Link to="./login" className="main__button">
                         <Button variant="contained" color="secondary" size="large">
                             Create an account
                         </Button>
                     </Link>
+                </section>
+
+                <section>
+                    <iframe src="https://agar.io/">
+                        No game here
+                    </iframe>
                 </section>
             </main>
         );
