@@ -78,6 +78,7 @@ class Header extends React.Component {
                 <SideBar
                     opened={this.state.sideBarOpened}
                     toggle={this.toggleSideBar}
+                    user={this.props.user}
                 />
             </>
         );
