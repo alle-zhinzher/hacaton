@@ -2,6 +2,7 @@ import React from "react";
 // Material
 import Input from "@material-ui/core/Input";
 import Button from '@material-ui/core/Button';
+import './SingUp.scss';
 // Redux
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
@@ -10,12 +11,11 @@ import { Link } from "react-router-dom";
 
 const styles = {
     form: {
-        width: '320px',
         margin: '0 auto'
     },
     input: {
-        width: '50%',
-        marginBottom: '1rem'
+        width: '100%',
+        marginBottom: '1rem',
     },
     button: {
         width: '100%',
@@ -24,7 +24,7 @@ const styles = {
     }
 };
 
-class SignUp extends React.Component {
+class SingUp extends React.Component {
     state = {
         username: '',
         password: '',
@@ -112,11 +112,11 @@ class SignUp extends React.Component {
                         style={styles.input}
                         onChange={this.onChange}
                     /><br />
-                    <Button type="submit" variant="contained" color="primary" style={styles.button}>
+                    <Button className='create-button' type="submit" variant="contained" color="primary" style={styles.button}>
                         Create account
                     </Button>
 
-                    <Link to='./signup' style={styles.input}>Create new account</Link>
+                    <Link to='/sing-in' className='sing-in__link' style={styles.input}>Sing-in</Link>
                 </form>
             </>
         );
@@ -127,4 +127,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.authReducer.isAuthenticated,
     errorMsg: state.authReducer.errorMsg,
 });
-export default connect(mapStateToProps, { register })(SignUp);
+export default connect(mapStateToProps, { register })(SingUp);

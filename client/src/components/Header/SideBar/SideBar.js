@@ -50,7 +50,7 @@ export default class SideBar extends React.Component{
                                     </ListItem>
                                 </Link>
                             ) : (
-                                <Link to='./signin' component="button" className="button-container">
+                                <Link to='./singin' component="button" className="button-container">
                                     <Button variant="contained" color="primary" className="login-button">
                                         Log in
                                     </Button>

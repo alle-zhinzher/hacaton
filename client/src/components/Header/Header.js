@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 //Components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -40,7 +40,7 @@ export default class Header extends React.Component {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-        this.setState({sideBarOpened: open});
+        this.setState({ sideBarOpened: open });
     };
 
     render() {
@@ -55,14 +55,16 @@ export default class Header extends React.Component {
                             GameOfTheYear
                         </Typography>
                         {
-                            this.props.user? (
+                            this.props.user ? (
                                 <>
                                     <Typography variant="h6" className="app-bar__menu-button" >
                                         {this.props.user.money}$
                                     </Typography>
-                                    <Button className="app-bar__menu-button"  variant="contained" color="secondary">
-                                        Add money
+                                    <Link to='/prices' className="app-bar__avatar" >
+                                        <Button className="app-bar__menu-button" variant="contained" color="secondary">
+                                            Add money
                                     </Button>
+                                    </Link>
                                     <Link to='/profile' className="app-bar__avatar" ><Avatar>{this.props.user.name[0]}</Avatar></Link>
                                 </>) : (<Button color="inherit">Login</Button>)
                         }

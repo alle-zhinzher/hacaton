@@ -2,6 +2,7 @@ import React from "react";
 
 import Input from "@material-ui/core/Input";
 import Button from '@material-ui/core/Button';
+import "./SingIn.scss";
 //Redux
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
@@ -24,7 +25,7 @@ const styles = {
     }
 };
 
-class SignIn extends React.Component {
+class SingIn extends React.Component {
     state = {
         email: '',
         password: '',
@@ -43,7 +44,7 @@ class SignIn extends React.Component {
             return <Redirect to="/" />;
         }
         return (
-            <>
+
             <form onSubmit={this.onSubmit}>
                 <Input
                     placeholder="Email"
@@ -70,11 +71,11 @@ class SignIn extends React.Component {
                     Log in
                     </Button>
 
-                <Link to='./signin' style={styles.input}>Sign in</Link>
+                <Link to='/sing-up' className='sing-up__link' style={styles.input}>Sing up</Link>
             </form>
-        </>
+
         );
-    } SignIn
+    } SingIn
 }
 
 
@@ -82,5 +83,5 @@ const mapStateToProps = state => ({
     isAuthenticated: state.authReducer.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(SignIn);
-SignIn
+export default connect(mapStateToProps, { login })(SingIn);
+SingIn
