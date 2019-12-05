@@ -39,37 +39,40 @@ class SignIn extends React.Component {
 
 
     render() {
+        if (this.props.isAuthenticated) {
+            return <Redirect to="/" />;
+        }
         return (
             <>
-                <form onSubmit={this.onSubmit}>
-                    <Input
-                        placeholder="Email"
-                        type="email"
-                        name="email"
-                        inputProps={{
-                            'aria-label': 'description',
-                        }}
-                        style={styles.input}
-                        onChange={this.onChange}
+            <form onSubmit={this.onSubmit}>
+                <Input
+                    placeholder="Email"
+                    type="email"
+                    name="email"
+                    inputProps={{
+                        'aria-label': 'description',
+                    }}
+                    style={styles.input}
+                    onChange={this.onChange}
 
-                    />
-                    <Input
-                        placeholder="Password"
-                        type="password"
-                        name="password"
-                        inputProps={{
-                            'aria-label': 'description',
-                        }}
-                        style={styles.input}
-                        onChange={this.onChange}
-                    />
-                    <Button type="submit" variant="contained" color="primary" style={styles.button}>
-                        Log in
+                />
+                <Input
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    inputProps={{
+                        'aria-label': 'description',
+                    }}
+                    style={styles.input}
+                    onChange={this.onChange}
+                />
+                <Button type="submit" variant="contained" color="primary" style={styles.button}>
+                    Log in
                     </Button>
 
-                    <Link to='./signin' style={styles.input}>Sign in</Link>
-                </form>
-            </>
+                <Link to='./signin' style={styles.input}>Sign in</Link>
+            </form>
+        </>
         );
     } SignIn
 }
