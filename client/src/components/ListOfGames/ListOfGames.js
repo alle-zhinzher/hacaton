@@ -23,6 +23,6 @@ class ListOfGames extends React.Component {
             </React.Fragment>
         )
     }
-};
+}
 
 export default ListOfGames;
