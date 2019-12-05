@@ -30,7 +30,7 @@ const styles = {
     }
 };
 
-class Header extends React.Component {
+export default class Header extends React.Component {
 
     state = {
         sideBarOpened: false

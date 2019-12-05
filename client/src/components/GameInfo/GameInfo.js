@@ -2,6 +2,7 @@ import React from 'react';
 import GameInfoItem from './GameInfoItem/GameInfoItem'
 import './GameInfo.scss'
 
+
 class GameInfo extends React.Component {
 
     constructor(props) {
@@ -15,7 +16,8 @@ class GameInfo extends React.Component {
                 'feature1': '36 numbers + single zero',
                 'feature2': 'Available on all devices',
                 'feature3': 'House edge – 2.70%',
-                'gallery1': '', 'gallery2': '',
+                'gallery1': '../../../assets/img/rouletteCard.png',
+                'gallery2': '../../../assets/img/rouletteCard.png',
                 'detailsTitle': 'Magnificent Roulette Variety & Incredible Winning Potential',
                 'detailInfo': 'You have officially arrived at the home of live Roulette. Ours is a warm and welcoming live dealer casino where you can feel completely at ease while enjoying the most stylish and immersive live Roulette games under the sun. We are delighted to provide you with an enticing selection of premium-grade live Roulette games, including these fine titles:',
                 'detailCaption': 'Immersive Roulette',

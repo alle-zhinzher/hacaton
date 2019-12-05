@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './GameInfoItem.scss'
+import './GameInfoItem.scss';
+
+
 
 const GameInfoItem = ({ game }) => (
     <div className='wrapper'>
         <h1 className='main-title'>{game.heading}</h1>
-
         <div className='main-image' style={{ backgroundImage: `url(${game.mainImage})` }}>mainimg</div>
+
+
+
+
 
         <div className='top-description'>
             <p className='top-description__content'>{game.descriptionText}</p>
-
             <div className='features'>
                 <h3 className='features__title'>Main Features</h3>
                 <ul className='feature-list'>
@@ -32,6 +36,7 @@ const GameInfoItem = ({ game }) => (
             <h3 className='details__caption'>{game.detailCaption}</h3>
             <p className='details__about'>{game.detailAbout}</p>
         </div>
+
 
     </div>
 );
