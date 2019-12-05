@@ -8,6 +8,7 @@ import GameCard from "./GameCard/GameCard";
 
 //Styles
 import "./Main.scss";
+import {Link} from "react-router-dom";
 
 export default class Main extends React.Component {
 
@@ -20,9 +21,9 @@ export default class Main extends React.Component {
     render() {
         return (
             <main className="main">
-                <section>
-                    <Typography variant="h1" gutterBottom>
-                        GameOfTheYear
+                <section className="h1">
+                    <Typography variant="h2" gutterBottom>
+                        Game Of The Year
                     </Typography>
 
                 </section>
@@ -59,11 +60,11 @@ export default class Main extends React.Component {
 
                 <section>
                     <h2>Join us!</h2>
-                    <form>
+                    <Link to="./signin" className="main__button">
                         <Button variant="contained" color="secondary" size="large">
                             Create an account
                         </Button>
-                    </form>
+                    </Link>
                 </section>
             </main>
         );
