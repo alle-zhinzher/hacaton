@@ -24,7 +24,7 @@ class App extends Component {
                         <Route path="/profile" component={Profile} />
                         <Route path="/sing-in" component={SignIn} />
                         <Route path="/sing-up" component={SignUp} />
-                        <Route path="/games" component={ListOfGames} />
+                        <Route path="/games" exact component={ListOfGames} />
                         <Route path="/games/:name" component={GameInfo} />
                     </Switch>
                 </Router>
