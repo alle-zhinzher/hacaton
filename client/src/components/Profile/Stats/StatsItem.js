@@ -8,14 +8,14 @@ const useStyles = makeStyles({
         marginTop: "10px"
     },
     number: {
-        color: yellow['A700'],
+        color: "black",
         fontWeight: "bold",
         fontSize: "1.5rem",
         position: "relative",
         zIndex: "3"
     },
     circle: {
-        backgroundColor: "black",
+        backgroundColor: yellow['A400'],
         borderRadius: "50%",
         padding: "5px",
         width: "auto",
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
         zIndex: "2"
     },
     card: {
-        backgroundColor: yellow['A400'],
+        backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -36,17 +36,16 @@ const useStyles = makeStyles({
         height: "125px",
         padding: "10px 30px",
         position: "relative",
-        marginTop: "20px"
+        marginTop: "20px",
+        borderRadius: "20px"
     },
     stripe: {
         width: "500px",
         height: "25px",
-        backgroundColor: "black",
+        backgroundColor: yellow['A400'],
         position: "absolute",
         bottom: "25px",
         zIndex: 1,
-        color: "white",
-        cursor: "default"
     },
 });
 
@@ -55,7 +54,7 @@ const StatsItem = (props) => {
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6} m={4}>
             <Card className={classes.card}>
                 <div className={classes.stripe}>
                 </div>
