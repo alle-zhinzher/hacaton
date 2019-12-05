@@ -12,6 +12,8 @@ require('./db/connection/mongoose');
 // Middleware
 app.use(require('./routs/middleware/logger'));
 // API routs
-app.use('/api/test', require('./routs/api/test'));
+app.use('/api/user', require('./routs/api/user'));
+app.use('/api/auth', require('./routs/api/auth'));
+app.use('/api/stat', require('./routs/api/statistics'));
 // Run server
 app.listen(serverConfig.PORT, () => console.log(`Server started on port ${serverConfig.PORT}`));
