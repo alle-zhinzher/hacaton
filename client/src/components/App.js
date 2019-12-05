@@ -13,6 +13,7 @@ import SignUp from './SignUp/SignUp';
 import GameInfo from './GameInfo/GameInfo';
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import Main from "./Main/Main";
 // Styles
 import './App.scss';
 
