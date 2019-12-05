@@ -90,4 +90,4 @@ const mapStateToProps = state => ({
     user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, null = git)(Header);
+export default connect(mapStateToProps, {loadUser})(Header);
